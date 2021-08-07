@@ -28,7 +28,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .header .sch_inner {
@@ -46,9 +46,9 @@
 }
 
 .sch_logo .sch_logo_nepes .sch_ico_mask::before {
-width: 40px;
-height: 40px;
-background-position: 0 -194px;
+    width: 40px;
+    height: 40px;
+    background-position: 0 -194px;
 }
 
 .sch_ico_mask {
@@ -73,7 +73,7 @@ background-position: 0 -194px;
     left: -1px;
     right: -1px;
     bottom: -1px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
 }
 
 .header .sch_input_wrap {
@@ -90,7 +90,7 @@ background-position: 0 -194px;
     height: 22px;
     font-weight: 700;
     line-height: 22px;
-    letter-spacing: -.5px;
+    letter-spacing: -0.5px;
     color: #1e1e23;
     border: 0;
     outline: transparent;

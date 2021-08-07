@@ -18,37 +18,41 @@
     <link href="../public/stylesheets/header.css" rel="stylesheet">
     <link href="../public/stylesheets/footer.css" rel="stylesheet">
     <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
 </head>
 
 <body>
-    <!-- header -->
-    <header class="header">
-        <div id="sch" class="sch">
-            <section>
-                <div class="sch_wrap">
-                    <div class="sch_inner">
-                        <div class="sch_logo">
-                            <a href="index.html" class="sch_logo_nepes">
-                                <span class="sch_ico_mask"></span>
-                            </a>
-                        </div>
-                        <form>
-                            <div class="sch_input_wrap">
-                                <input id="query" type="search" name="query" title="검색어를 입력해주세요."
-                                    placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
-                                <button id="clear_input" type="button" class="sch_btn_reset"></button>
-                            </div>
-                            <button class="sch_btn_search">
-                                <span class="sch_ico_mask"></span>
-                            </button>
-                            <div class="sch_region"></div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </header><!-- /END header -->
     <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header><!-- /END header -->
         <div class="flick-container">
             <div class="wrap"></div>
         </div>
