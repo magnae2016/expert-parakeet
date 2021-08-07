@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <link href="../public/stylesheets/footer.css" rel="stylesheet">
+    <style>
+        .grid1 {
+            overflow: hidden;
+            width: 100%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .grid1::after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        .comp_economy {
+            position: relative;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+        }
+
+        .ce_title_wrap {
+            position: relative;
+            margin: 0 20px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .ce_title_wrap::after {
+            content: "";
+            display: table;
+            table-layout: fixed;
+            clear: both;
+        }
+
+        .ce_title_a {
+            display: block;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .ce_title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #1e1e23;
+            padding: 14px 0 10px;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+            line-height: 23px;
+        }
+
+        .ce_main {
+            font-weight: 700;
+        }
+
+        .ce_tab_wrap {
+            margin: 0 20px;
+            padding-bottom: 12px;
+        }
+
+        .ce_tab_list {
+            display: flex;
+        }
+
+        .ce_tab_list::after {
+            content: "";
+            display: table;
+            table-layout: fixed;
+            clear: both;
+        }
+
+        .ce_tab_list .ce_titem {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .ce_tab_list .ce_titem .ce_ta {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border: 1px solid #e6e6ea;
+            position: relative;
+            display: block;
+            padding: 0 5px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 36px;
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        .ce_tab_list .ce_ta[aria-selected="true"] {
+            color: #fff;
+            font-weight: 700;
+            border-color: rgba(0, 0, 0, 0.04);
+            background-color: #49525e;
+            z-index: 1;
+        }
+
+        .ce_tab_list .ce_titem:first-child .ce_ta {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .ce_tab_list .ce_titem:last-child .ce_ta {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ce_tab_list .ce_titem+.ce_titem {
+            margin-left: -1px;
+        }
+
+        .ce_stock_wrap {
+            margin-top: -12px;
+        }
+
+        .ce_elist {
+            position: relative;
+            padding: 0 20px 2px;
+        }
+
+        .ce_eitem {
+            position: relative;
+        }
+
+        .ce_eitem+.ce_eitem::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 60px;
+            height: 1px;
+            background-color: #efeff0;
+        }
+
+        .ce_elist .ce_ea {
+            display: flex;
+            position: relative;
+            padding: 15px 0 15px 59px;
+            -webkit-box-align: initial;
+            align-items: initial;
+        }
+
+        .ce_elist .ce_ea::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -50px;
+            bottom: 50px;
+            left: 24px;
+            width: 1px;
+            background-image: -webkit-linear-gradient(top,
+                    rgba(185, 187, 190, 0.73) 1px,
+                    transparent 2px);
+            background-image: linear-gradient(to bottom,
+                    rgba(185, 187, 190, 0.73) 1px,
+                    transparent 2px);
+            -webkit-background-size: 1px 6px;
+            background-size: 1px 6px;
+        }
+
+        .ce_elist .ce_eitem:first-child .ce_ea::before {
+            content: none;
+        }
+
+        .ce_elist .ce_time {
+            position: absolute;
+            top: 15px;
+            left: 0px;
+            padding: 0 5px;
+            min-width: 49px;
+            color: #767678;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 19px;
+            text-align: center;
+            border: 1px solid rgba(144, 150, 161, 0.25);
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .ce_eitem.ce_announce .ce_time {
+            color: #fff;
+            background-color: #37cea8;
+            border-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .ce_emw {
+            width: 22px;
+            height: 22px;
+            margin: 1px 8px 0 1px;
+            border-radius: 50%;
+        }
+
+        .ce_emw::before {
+            -webkit-transform: scale(0.6287);
+            transform: scale(0.6287);
+            -webkit-transform-origin: top left;
+            transform-origin: top left;
+        }
+
+        .ce_emw::before {
+            content: "";
+            display: block;
+            width: 35px;
+            height: 35px;
+            background-position: -160px -336px;
+        }
+
+        .ce_etw {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .ce_etit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #303038;
+            margin-bottom: 2px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 21px;
+            letter-spacing: -0.5px;
+        }
+
+        .ce_etit .ce_country {
+            color: #9096a1;
+            padding-right: 5px;
+        }
+
+        .ce_einfo {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #767678;
+        }
+
+        .ce_einfo .info {
+            color: rgba(48, 48, 56, 0.8);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: -0.3px;
+            vertical-align: top;
+            float: left;
+        }
+
+        .ce_einfo .info+.info {
+            margin-left: 5px;
+            padding-left: 8px;
+            position: relative;
+            color: #767678;
+            float: none;
+        }
+
+        .ce_einfo .info+.info::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            background-color: #dfe3ed;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .ce_einfo .info .ce_st {
+            padding-right: 4px;
+            color: #767678;
+            font-weight: 400;
+        }
+
+        .ce_einfo .info .ce_gap {
+            padding-left: 4px;
+            color: rgba(48, 48, 56, 0.8);
+            vertical-align: top;
+        }
+
+        .ce_info {
+            position: relative;
+            margin: 0 20px;
+            padding-bottom: 16px;
+            text-align: center;
+        }
+
+        .ce_btn_more {
+            color: #303038;
+            border: 1px solid #e6e6ea;
+            display: inline-block;
+            max-width: 100%;
+            padding: 0 27px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 40px;
+            letter-spacing: -0.5px;
+            -webkit-border-radius: 22px;
+            border-radius: 22px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+
+        .ce_btn_more::after {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-width: 1px 1px 0 0;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.48);
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+            vertical-align: top;
+            margin: 15px 0 0 10px;
+        }
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="header">
+        <div id="sch" class="sch">
+            <section>
+                <div class="sch_wrap">
+                    <div class="sch_inner">
+                        <div class="sch_logo">
+                            <a href="index.html" class="sch_logo_nepes">
+                                <span class="sch_ico_mask"></span>
+                            </a>
+                        </div>
+                        <form>
+                            <div class="sch_input_wrap">
+                                <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                    placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                            </div>
+                            <button class="sch_btn_search">
+                                <span class="sch_ico_mask"></span>
+                            </button>
+                            <div class="sch_region"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </header><!-- /END header -->
+    <div id="ct" role="main">
+        <div class="flick-container">
+            <div class="wrap">
+                <div class="grid1">
+                    <div class="comp_economy">
+                        <div class="ce_title_wrap">
+                            <div class="ce_title_a">
+                                <h3 class="ce_title">
+                                    <span class="ce_main">거시경제 지표</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="ce_tab_wrap">
+                            <ul class="ce_tab_list" role="tablist">
+                                <li class="ce_titem" role="presentation">
+                                    <a href="#" class="ce_ta" role="tab" aria-selected="true"><span
+                                            class="ce_tt">어제</span></a>
+                                </li>
+                                <li class="ce_titem" role="presentation">
+                                    <a href="#" class="ce_ta" role="tab" aria-selected="false"><span
+                                            class="ce_tt">오늘</span></a>
+                                </li>
+                                <li class="ce_titem" role="presentation">
+                                    <a href="#" class="ce_ta" role="tab" aria-selected="false"><span
+                                            class="ce_tt">내일</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ce_stock_wrap" role="tabpanel">
+                            <ul class="ce_elist">
+                                <li class="ce_eitem ce_announce">
+                                    <a class="ce_ea">
+                                        <span class="ce_time">23:59</span>
+                                        <div class="ce_emw"></div>
+                                        <div class="ce_etw">
+                                            <div class="ce_etit"><em class="ce_country">중국</em>무역수지(USD)</div>
+                                            <div class="ce_etw">
+                                                <div class="ce_einfo">
+                                                    <span class="info">
+                                                        <strong class="ce_st">발표</strong>예정</span>
+                                                    <span class="info">이전<span class="ce_gap">51.53 B</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="ce_eitem">
+                                    <a class="ce_ea">
+                                        <span class="ce_time">23:59</span>
+                                        <div class="ce_emw"></div>
+                                        <div class="ce_etw">
+                                            <div class="ce_etit"><em class="ce_country">중국</em>무역수지(USD)</div>
+                                            <div class="ce_etw">
+                                                <div class="ce_einfo">
+                                                    <span class="info">
+                                                        <strong class="ce_st">발표</strong>예정</span>
+                                                    <span class="info">이전<span class="ce_gap">51.53 B</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="ce_info">
+                                <button type="button" class="ce_btn_more">거시경제 지표 더보기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">시·도</button>
+                        </div>
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">구·시·군</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
