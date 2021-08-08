@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <link href="../public/stylesheets/footer.css" rel="stylesheet">
+    <style>
+        .ce_index {
+            position: relative;
+            padding: 18px 0 34px;
+        }
+
+        .ce_index_wrap {
+            position: relative;
+            margin: 0 20px;
+            border: 1px solid #e5eaf1;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background-color: #f6f8fb;
+        }
+
+        .ce_index_list {
+            -webkit-border-radius: inherit;
+            border-radius: inherit;
+            margin: -1px 0 0 -1px;
+        }
+
+        .ce_index_list::after {
+            content: "";
+            display: table;
+            table-layout: fixed;
+            clear: both;
+        }
+
+        .ce_index_item {
+            float: left;
+            width: 33.3333%;
+        }
+
+        .ce_index_item:nth-child(3n + 1) {
+            clear: both;
+        }
+
+        .ce_index_item .ce_index_a {
+            display: block;
+            padding: 14px 10px 15px;
+            max-height: 99px;
+            border: 1px solid #ecf1f6;
+            border-width: 1px 0 0 1px;
+            color: rgba(30, 30, 35, 0.7);
+            letter-spacing: -0.3px;
+            -webkit-transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-transition-property: background-color, -webkit-box-shadow;
+            transition-property: background-color, -webkit-box-shadow;
+            transition-property: background-color, box-shadow;
+            transition-property: background-color, box-shadow, -webkit-box-shadow;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .ce_index_item:nth-child(-n + 3) .ce_index_a {
+            border-top-color: #e5eaf1;
+        }
+
+        .ce_index_item:nth-child(3n + 1) .ce_index_a {
+            border-left-color: #e5eaf1;
+        }
+
+        .ce_index_item:nth-child(1) .ce_index_a {
+            -webkit-border-top-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        @-webkit-keyframes animation_ce_index_selected {
+            0% {
+                background-color: #f6f8fb;
+            }
+
+            100% {
+                background-color: #fff;
+                color: #1e1e23;
+                -webkit-box-shadow: 0 2px 5px 0 rgba(36, 81, 130, 0.15);
+                box-shadow: 0 2px 5px 0 rgba(36, 81, 130, 0.15);
+            }
+        }
+
+        @keyframes animation_ce_index_selected {
+            0% {
+                background-color: #f6f8fb;
+            }
+
+            100% {
+                background-color: #fff;
+                color: #1e1e23;
+                -webkit-box-shadow: 0 2px 5px 0 rgba(36, 81, 130, 0.15);
+                box-shadow: 0 2px 5px 0 rgba(36, 81, 130, 0.15);
+            }
+        }
+
+        .ce_index_item .ce_index_a[aria-selected="true"] {
+            position: relative;
+            -webkit-animation: animation_ce_index_selected 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: animation_ce_index_selected 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            z-index: 1;
+        }
+
+        .ce_index_item:nth-last-child(1) .ce_index_a {
+            -webkit-border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .ce_index_item:nth-child(3) .ce_index_a {
+            -webkit-border-top-right-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .comp_economy .ce_index_item:nth-last-child(3) .ce_index_a {
+            -webkit-border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .ce_index_item .ce_index_a[aria-selected="true"]::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            border: 1px solid #e0e6ee;
+            -webkit-border-radius: inherit;
+            border-radius: inherit;
+        }
+
+        .ce_index_item .ce_index_a .ce_tit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 5px;
+            display: inline-block;
+            max-width: 100%;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 14px;
+            letter-spacing: -0.2px;
+            vertical-align: top;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .ce_index_item .ce_index_a .ce_price {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 15px;
+            letter-spacing: -0.2px;
+        }
+
+        .ce_gap_rate {
+            display: inline-block;
+            min-width: 60px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            background-color: #909aab;
+            vertical-align: top;
+            letter-spacing: -0.3px;
+        }
+
+        .ce_gap_rate.ce_dec {
+            background-color: #4f67d6;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
+</head>
+
+<body>
+    <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header><!-- /END header -->
+        <div class="flick-container">
+            <div class="wrap">
+                <div class="ce_index">
+                    <div>
+                        <div class="ce_index_wrap">
+                            <ul class="ce_index_list">
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="true">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false">
+                                        <div class="ce_tit  ">코스피</div>
+                                        <div class="ce_price">3,270.36</div>
+                                        <span class="ce_gap_rate ce_dec ">-0.18%</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">시·도</button>
+                        </div>
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">구·시·군</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
