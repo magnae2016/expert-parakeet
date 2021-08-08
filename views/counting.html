@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <link href="../public/stylesheets/footer.css" rel="stylesheet">
+    <style>
+        .district_content {
+            padding: 0 20px;
+            letter-spacing: -1px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        .district_content .title {
+            position: relative;
+            padding: 20px 0 2px;
+        }
+
+        .district_content .title_txt {
+            font-size: 19px;
+        }
+
+        .district_content .title_info {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            font-size: 15px;
+            line-height: 17px;
+            color: #333;
+        }
+
+        .district_content .title_info::before {
+            content: "";
+            display: inline-block;
+            width: 17px;
+            height: 17px;
+            background-position: -446px -499px;
+            vertical-align: top;
+            margin-right: 4px;
+        }
+
+        .district_content .status {
+            padding-bottom: 15px;
+        }
+
+        .district_content .status_item {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            margin-top: 19px;
+        }
+
+        .district_content .district_candidate,
+        .district_content .district_rate,
+        .district_content .district_graph,
+        .district_content .district_count {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .district_content .status_item.is_first .district_candidate,
+        .district_content .status_item.is_first .district_rate {
+            font-weight: bold;
+        }
+
+        .district_content .district_candidate {
+            width: 29.7%;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .district_content .district_rate {
+            width: 50px;
+            text-align: right;
+        }
+
+        .district_content .district_graph {
+            padding-left: 9px;
+        }
+
+        .district_content .graph_bar {
+            position: relative;
+            height: 15px;
+        }
+
+        .district_content .graph_bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #f2f2f2;
+            margin-left: 1px;
+        }
+
+        .district_content .district_count {
+            width: 21.8%;
+            text-align: right;
+        }
+
+        .district_content .count_txt {
+            display: block;
+            margin: -1px -1px 0 0;
+            font-size: 14px;
+            letter-spacing: 0;
+        }
+
+        .district_content .candidate_party {
+            color: #7f7f7f;
+        }
+
+        .district_content .rate_txt {
+            display: block;
+            margin-top: -1px;
+            font-size: 16px;
+            letter-spacing: 0;
+        }
+
+        .district_content .rate_per {
+            font-size: 13px;
+        }
+
+        .district_content .status_item.is_first.party1 .district_count,
+        .district_content .status_item.is_first.party100 .district_count,
+        .district_content .status_item.is_first.party1 .district_rate,
+        .district_content .status_item.is_first.party100 .district_rate {
+            color: #0362c1;
+        }
+
+        .district_content .status_item.party1 .graph_bar,
+        .district_content .status_item.party100 .graph_bar {
+            background-color: #0362c1;
+        }
+
+        .district_content .info {
+            display: table;
+            width: 100%;
+            height: 60px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .district_content .info_l,
+        .district_content .info_r {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .district_content .info_txt {
+            display: inline-block;
+            line-height: 16px;
+        }
+
+        .district_content .info_txt+.info_txt::before {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 10px;
+            background-color: #e0e0e0;
+            margin: 3px 6px 0 3px;
+            vertical-align: top;
+        }
+
+        .district_content .info_txt:last-child::before {
+            display: none;
+        }
+
+        .district_content .info_txt:last-child {
+            display: block;
+        }
+
+        .district_content .info_l .info_txt {
+            font-size: 11px;
+            color: #7f7f7f;
+        }
+
+        .district_content .info_count {
+            letter-spacing: 0;
+        }
+
+        .district_content .info_r {
+            text-align: right;
+        }
+
+        .district_content .info_r .info_txt {
+            display: block;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .district_content .info_r .info_count {
+            display: block;
+            margin-top: -1px;
+            margin-right: -1px;
+            color: #333;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
+</head>
+
+<body>
+    <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header><!-- /END header -->
+        <div class="flick-container">
+            <div class="wrap">
+                <div class="district_content">
+                    <div class="title">
+                        <h3 class="title_txt">서울</h3>
+                        <em class="title_info title_info-chk">개표완료</em>
+                    </div>
+                    <div class="status">
+                        <ul class="status_list">
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">문재인</span>
+                                    <em class="candidate_party">민주당</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">42.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:42.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <div class="info_l">
+                            <span class="info_txt">무효투표수 : <span class="info_count">21,729</span></span>
+                            <span class="info_txt">기권수 : <span class="info_count">1,792,353</span></span>
+                            <span class="info_txt">선거인수 : <span class="info_count">8,382,999</span></span>
+                        </div>
+                        <div class="info_r">
+                            <span class="info_txt">득표수 합계</span>
+                            <span class="info_count">6,568,917</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">시·도</button>
+                        </div>
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">구·시·군</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

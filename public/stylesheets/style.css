@@ -111,7 +111,8 @@ table caption {
     background-repeat: no-repeat;
 }
 
-.district_form .selectbox .selectbox_btn::after {
+.district_form .selectbox .selectbox_btn::after,
+.district_content .title_info::before {
     background-image: url("../images/sp_election_vote.png");
     -webkit-background-size: 645px 643px;
     background-size: 645px 643px;
@@ -147,7 +148,7 @@ table caption {
     position: relative;
     overflow-y: auto;
     margin-top: 58px;
-    margin-bottom: 57px;
+    padding-bottom: 58px;
 }
 
 .flick-container .wrap {
