@@ -84,6 +84,14 @@ ul {
     list-style: none;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table caption {
+    display: none;
+}
+
 ::-ms-clear {
     display: none;
 }
@@ -98,7 +106,7 @@ ul {
 .sch_logo .sch_logo_nepes .sch_ico_mask::before,
 .sch_btn_reset::before,
 .sch_btn_search .sch_ico_mask::before {
-    background-image: url(../images/sp_main_search_3aad7571.png);
+    background-image: url("../images/sp_main_search_3aad7571.png");
     -webkit-background-size: 323px 234px;
     background-size: 323px 234px;
     background-repeat: no-repeat;
@@ -115,6 +123,20 @@ ul {
     -webkit-background-size: 570px 543px;
     background-size: 570px 543px;
     background-repeat: no-repeat;
+}
+
+.graph_header,
+.graph_scroll_wrap .inner {
+    background: url("../images/bg_graph.png") repeat-x;
+    background-size: 1px 217px;
+    -webkit-background-size: 1px 217px;
+}
+
+.list_scroll .bar.item.on::before,
+.list_scroll .bar.item.on::after {
+    background: url("../images/bg_on.png") repeat-y;
+    background-size: 1px 5px;
+    -webkit-background-size: 1px 5px;
 }
 
 #ct {

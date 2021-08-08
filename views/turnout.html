@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <link href="../public/stylesheets/footer.css" rel="stylesheet">
+    <style>
+        .sc {
+            clear: both;
+            position: relative;
+        }
+
+        .sc ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cs_voting_rate {
+            letter-spacing: -0.3px;
+        }
+
+        .api_subject_bx {
+            margin-top: 9px;
+            border: 1px solid rgb(226, 229, 232);
+            border-width: 1px 0;
+            background-color: #ffffff;
+        }
+
+        .api_title_area {
+            position: relative;
+        }
+
+        .api_title {
+            height: 50px;
+            padding: 0 18px;
+            font-size: 17px;
+            line-height: 51px;
+            color: #000000;
+            letter-spacing: -0.3px;
+        }
+
+        .num_statement {
+            background-color: #fbfcfd;
+            border-top: 1px solid rgb(236, 240, 242);
+        }
+
+        .legend_area {
+            padding: 16px 18px 12px 18px;
+        }
+
+        .legend_area ul {
+            overflow: hidden;
+        }
+
+        .legend_area li {
+            float: left;
+            margin: 0 0 0 9px;
+            font-size: 14px;
+            line-height: 18px;
+            color: rgb(66, 66, 66);
+        }
+
+        .legend_area ul li:first-child {
+            margin-left: 0;
+        }
+
+        .legend_area ul li::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin: 5px 5px 0 0;
+            border-radius: 7px;
+            -webkit-border-radius: 7px;
+            vertical-align: top;
+        }
+
+        .legend_area ul li.e_president::before {
+            background-color: rgba(224, 95, 95, 0.7);
+        }
+
+        .legend_area ul li.e_general::before {
+            background-color: rgba(53, 177, 204, 0.7);
+        }
+
+        .legend_area ul li.e_local::before {
+            background-color: rgba(110, 90, 206, 0.7);
+        }
+
+        .graph_area {
+            overflow: hidden;
+            padding: 0 0 0 18px;
+            height: 217px;
+        }
+
+        .graph_header {
+            float: left;
+            height: 217px;
+            width: 62px;
+            font-size: 11px;
+            color: rgb(143, 143, 143);
+        }
+
+        .graph_header ol {
+            padding: 0 0 0;
+        }
+
+        .graph_header li {
+            height: 37px;
+            padding: 0px 0 0 6px;
+        }
+
+        .graph_scroll_wrap {
+            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            height: 217px;
+            padding-bottom: 30px;
+            box-sizing: content-box;
+        }
+
+        .graph_scroll_wrap .inner {
+            position: relative;
+            display: inline-block;
+            height: 217px;
+            margin-right: 18px;
+        }
+
+        .list_scroll {
+            position: relative;
+            padding: 1px 0 0 0;
+            height: 100%;
+            font-size: 0;
+            line-height: 0;
+            white-space: nowrap;
+        }
+
+        .list_scroll .bar.item {
+            display: inline-block;
+            width: 61px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .list_scroll .bar.item.on {
+            position: relative;
+        }
+
+        .list_scroll .bar.item.on::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 31px;
+            left: 0px;
+            width: 1px;
+            z-index: 10;
+        }
+
+        .list_scroll .bar.item.on::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 31px;
+            right: -1px;
+            width: 1px;
+            background-color: rgba(233, 236, 239, 0.5);
+            z-index: 10;
+        }
+
+        .list_scroll .bar.item a {
+            display: block;
+            height: 100%;
+        }
+
+        .graph_wrap {
+            position: relative;
+            z-index: 100;
+            height: 185px;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: flex-end;
+            -webkit-align-items: flex-end;
+            display: -webkit-box;
+            -webkit-box-align: end;
+            -webkit-box-pack: center;
+        }
+
+        .item.on .graph_wrap {
+            background-color: rgba(233, 236, 239, 0.3);
+        }
+
+        .graph_wrap .graph_bar {
+            display: block;
+            width: 11px;
+            left: 50%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            background-origin: border-box;
+        }
+
+        .item.e_local .graph_bar {
+            background-color: #988bd7;
+            border-top: 1px solid #7b6cc5;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item.e_general .graph_bar {
+            background-color: #6ec9dc;
+            border-top: 1px solid #5ebccf;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item.e_president .graph_bar {
+            background-color: #ec8d8d;
+            border-top: 1px solid #e27676;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .graph_wrap .graph_bar .num {
+            display: block;
+            width: 30px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 16px;
+            position: relative;
+            left: 50%;
+            top: -18px;
+            margin-left: -15px;
+        }
+
+        .item.e_local .graph_bar .num {
+            color: #988bd7;
+        }
+
+        .item.e_general .graph_bar .num {
+            color: #5ebccf;
+        }
+
+        .item.e_president .graph_bar .num {
+            color: #ec8d8d;
+        }
+
+        .num_title {
+            display: block;
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            border-left: 1px solid rgba(220, 224, 226, 0.5);
+            background-color: #fbfcfd;
+            text-align: center;
+            font-weight: normal;
+            color: rgb(102, 102, 102);
+        }
+
+        .item:first-child .num_title {
+            border-left: 0l;
+        }
+
+        .table_title {
+            position: relative;
+            padding: 18px 0 0 18px;
+        }
+
+        .table_title h3 {
+            font-size: 16px;
+            color: rgb(36, 36, 36);
+        }
+
+        .sub_option_area {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 0;
+            font-family: sans-serif;
+        }
+
+        .sub_option_area .sub_option {
+            display: inline-block;
+            padding: 0 7px;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, HelveticaNeue,
+                AppleSDGothicNeo-Regular, sans-serif;
+            color: #8f8f8f;
+            letter-spacing: -0.3px;
+        }
+
+        .sub_option_area .sub_option::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 6px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            background-color: #9e9e9e;
+            vertical-align: 3px;
+        }
+
+        .sub_option_area .sub_option[aria-selected="true"] {
+            color: #242424;
+        }
+
+        .sub_option_area .sub_option[aria-selected="true"]::before {
+            background-color: #0abe16;
+        }
+
+        .table_content {
+            overflow: hidden;
+            padding: 13px 0 17px 18px;
+        }
+
+        .table_header {
+            float: left;
+            width: 62px;
+            border: 1px solid #ecf0f2;
+        }
+
+        .table_header table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .table_header table th {
+            height: 42px;
+            background-color: #f8fafb;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .table_header table tr+tr th {
+            border-top: 1px solid #ecf0f2;
+        }
+
+        .table_body {
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        .table_body .inner {
+            display: inline-block;
+            margin-right: 18px;
+        }
+
+        .api_list_scroll {
+            position: relative;
+            height: 100%;
+            font-family: sans-serif;
+            font-size: 0;
+            line-height: 0;
+            white-space: nowrap;
+        }
+
+        .table_body table {
+            float: left;
+            table-layout: auto;
+        }
+
+        .table_body tr th {
+            width: 61px;
+            height: 43px;
+            border: 1px solid #ecf0f2;
+            border-width: 1px 0 0 1px;
+            background-color: #f8fafb;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .table_body tr th:first-child {
+            border-left: 0;
+        }
+
+        .table_body tr th:last-child {
+            border-width: 1px;
+        }
+
+        .table_body tbody tr td {
+            min-width: 61px;
+            height: 42px;
+            border: 1px solid #ecf0f2;
+            border-width: 1px 0 1px 1px;
+            background-color: #fff;
+            vertical-align: middle;
+            text-align: center;
+            color: #424242;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .table_body tbody tr td.highest {
+            color: #f84b4b;
+            font-weight: bold;
+        }
+
+        .table_body tbody tr td.lowest {
+            color: #5199fc;
+            font-weight: bold;
+        }
+
+        .table_body tbody tr td:first-child {
+            border-left: 0;
+        }
+
+        .table_body tbody tr td:last-child {
+            border-width: 1px;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
+</head>
+
+<body>
+    <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header><!-- /END header -->
+        <div class="flick-container">
+            <div class="wrap">
+                <section class="sc cs">
+                    <div class="sc cs_voting_rate">
+                        <div class="api_subject_bx">
+                            <div class="api_title_area">
+                                <h2 class="api_title">역대선거 투표율</h2>
+                            </div>
+                            <div class="num_statement">
+                                <div class="graph_box">
+                                    <div class="legend_area">
+                                        <ul>
+                                            <li class="e_president">대선</li>
+                                            <li class="e_general">총선</li>
+                                            <li class="e_local">지선</li>
+                                        </ul>
+                                    </div>
+                                    <div class="graph_area">
+                                        <div class="graph_header">
+                                            <ol>
+                                                <li>100%</li>
+                                                <li>80%</li>
+                                                <li>60%</li>
+                                                <li>40%</li>
+                                                <li>20%</li>
+                                                <li>0%</li>
+                                            </ol>
+                                        </div>
+                                        <div class="barChart graph_scroll_wrap">
+                                            <div class="inner">
+                                                <div class="list_scroll">
+                                                    <div class="bar item e_local on">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_general">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_president">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">1988</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table_box">
+                                    <div class="table_title">
+                                        <h3>제7회 전국동시지방선거</h3>
+                                        <div class="sort_tab">
+                                            <div class="sub_option_area">
+                                                <a class="sub_option" aria-selected="true" role="option">투표율순</a>
+                                                <a class="sub_option" aria-selected="false" role="option">시도순</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table_content">
+                                        <div class="table_header">
+                                            <table>
+                                                <caption>투표율제목</caption>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>지역</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>투표율</th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table_body">
+                                            <div class="inner">
+                                                <div class="api_list_scroll">
+                                                    <table>
+                                                        <caption>투표율</caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">전남</th>
+                                                                <th scope="col">제주</th>
+                                                                <th scope="col">경남</th>
+                                                                <th scope="col">전북</th>
+                                                                <th scope="col">울산</th>
+                                                                <th scope="col">경북</th>
+                                                                <th scope="col">강원</th>
+                                                                <th scope="col">세종</th>
+                                                                <th scope="col">서울</th>
+                                                                <th scope="col">충북</th>
+                                                                <th scope="col">광주</th>
+                                                                <th scope="col">부산</th>
+                                                                <th scope="col">충남</th>
+                                                                <th scope="col">대전</th>
+                                                                <th scope="col">경기</th>
+                                                                <th scope="col">대구</th>
+                                                                <th scope="col">인천</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="highest">69.2%</td>
+                                                                <td>65.9%</td>
+                                                                <td>65.8%</td>
+                                                                <td>65.2%</td>
+                                                                <td>64.8%</td>
+                                                                <td>64.7%</td>
+                                                                <td>63.2%</td>
+                                                                <td>61.7%</td>
+                                                                <td>59.9%</td>
+                                                                <td>59.3%</td>
+                                                                <td>59.2%</td>
+                                                                <td>58.8%</td>
+                                                                <td>58.1%</td>
+                                                                <td>58.0%</td>
+                                                                <td>57.8%</td>
+                                                                <td>57.3%</td>
+                                                                <td class="lowest">55.3%</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">시·도</button>
+                        </div>
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">구·시·군</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
