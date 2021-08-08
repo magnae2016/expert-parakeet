@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <link href="../public/stylesheets/footer.css" rel="stylesheet">
+    <style>
+        .choice_wrap {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .choice_wrap::before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background-color: #f2f2f2;
+        }
+
+        .choice_inner {
+            position: relative;
+            height: 40px;
+            overflow: hidden;
+            overflow-x: scroll;
+        }
+
+        .choice_list {
+            height: 100%;
+            font-size: 0;
+            line-height: 0;
+            white-space: nowrap;
+        }
+
+        .choice_list>a {
+            position: relative;
+            display: inline-block;
+            height: 40px;
+            padding: 0 6px 0 7px;
+            font-size: 16px;
+            color: #000;
+            line-height: 40px;
+            letter-spacing: -1px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .choice_wrap .choice_list>a:first-child {
+            padding-left: 14.5px;
+        }
+
+        .choice_wrap .choice_list>a:last-child {
+            padding-right: 13.5px;
+        }
+
+        .choice_list>a strong {
+            position: relative;
+            display: block;
+            padding: 0 5px;
+            font-weight: normal;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .choice_wrap .choice_list>a.selected>strong {
+            border-color: #6a35b1;
+            color: #6a35b1;
+        }
+
+        .choice_wrap .choice_list>a.selected>strong::after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background-color: #6a35b1;
+        }
+
+        .count {
+            overflow: hidden;
+            position: relative;
+            background: #FFFFFF;
+        }
+
+        .count_scroll {
+            position: relative;
+            width: 100%;
+        }
+
+        .v_status {
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            font-family: HelveticaNeue-Medium, AppleSDGothicNeo-Medium, sans-serif;
+        }
+
+        .count .v_status .bx {
+            padding: 6px 15px;
+            border-bottom: 1px solid #f2f2f2;
+            line-height: 20px;
+        }
+
+        .v_status .bx:before,
+        .v_status .bx:after {
+            content: "";
+            display: table;
+        }
+
+        .ico_status {
+            width: 40px;
+            height: 21px;
+            background-position: -329px -499px;
+            font-size: .1rem;
+            line-height: initial;
+            color: rgba(1, 0, 0, 0);
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .ico_status.as_count_complete {
+            width: 50px;
+            height: 21px;
+            background-position: -229px -499px;
+        }
+
+        .v_status .tit_status {
+            display: inline-block;
+            padding: 0 0 0 4px;
+            color: #333;
+            font-size: 15px;
+            letter-spacing: -1px;
+            vertical-align: top;
+        }
+
+        .v_status .ico_status+.tit_status {
+            padding: 0 0 0 4px;
+        }
+
+        .v_status .pnt_status {
+            display: inline-block;
+            padding-left: 2px;
+            font-size: 14px;
+            color: #666;
+            vertical-align: top;
+            letter-spacing: -1px;
+            font-family: HelveticaNeue-Light, AppleSDGothicNeo-Light, sans-serif;
+        }
+
+        .v_status .pnt_status .per {
+            color: #333;
+            font-family: HelveticaNeue, AppleSDGothicNeo-Regular, sans-serif;
+            letter-spacing: 0;
+        }
+
+        .count_others {
+            background-color: #FFFFFF;
+        }
+
+        .count_others_item {
+            display: table;
+            width: 100%;
+            height: 60px;
+            table-layout: fixed;
+            border-top: 1px solid #f2f2f2;
+        }
+
+        .count_others .count_others_item:first-child {
+            border-top: 0;
+        }
+
+        .count_others_ranking {
+            display: table-cell;
+            width: 34px;
+            padding-right: 6px;
+            text-align: right;
+            font-family: HelveticaNeue-Light, AppleSDGothicNeo-Light, sans-serif;
+            font-size: 17px;
+            color: #444;
+            vertical-align: middle;
+            letter-spacing: -1px;
+        }
+
+        .count_others_ranking em {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .count_others_ranking span {
+            display: inline-block;
+            position: relative;
+            top: 2px;
+            vertical-align: top;
+            margin-left: 2.5px;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .count_others_image {
+            display: table-cell;
+            width: 40px;
+            vertical-align: middle;
+        }
+
+        .count_others_image_inner {
+            position: relative;
+        }
+
+        .count_others_image_inner::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .count_others_text {
+            display: table-cell;
+            width: 76px;
+            padding-left: 7px;
+            line-height: 1;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        .count_others_name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: HelveticaNeue-Medium, AppleSDGothicNeo-Medium, sans-serif;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+
+        .count_others_party {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-top: 5px;
+            font-family: HelveticaNeue-Light, AppleSDGothicNeo-Light, sans-serif;
+            font-size: 13px;
+            letter-spacing: -1px;
+            color: #666;
+            vertical-align: middle;
+        }
+
+        .count_others_graph {
+            display: table-cell;
+            vertical-align: middle;
+            padding-top: 2px;
+            padding-right: 15px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 15px;
+            color: #333;
+        }
+
+        .count_others_bar {
+            position: relative;
+            width: 112px;
+            height: 15px;
+            white-space: nowrap;
+        }
+
+        .count_others_bar_inner {
+            display: inline-block;
+            height: 15px;
+            min-width: 1px;
+            margin-right: 8px;
+            vertical-align: top;
+            background-color: #7e572e;
+        }
+
+        .count_others_per {
+            position: absolute;
+            vertical-align: top;
+            font-family: HelveticaNeue-Medium, AppleSDGothicNeo-Medium, sans-serif;
+            font-weight: normal;
+            font-size: 15px;
+            color: #7e572e;
+        }
+
+        .party5 .count_others_bar_inner,
+        .party730 .count_others_bar_inner {
+            background-color: #f0a001;
+        }
+
+        .party5 .count_others_per,
+        .party730 .count_others_per {
+            color: #f0a001;
+        }
+
+        .count_others_num {
+            padding-top: 4.5px;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
+</head>
+
+<body>
+    <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header><!-- /END header -->
+        <div class="flick-container">
+            <div class="wrap">
+                <div class="sc choice_wrap">
+                    <div class="choice_inner">
+                        <div>
+                            <nav class="choice_list">
+                                <a class="selected"><strong>전국</strong></a>
+                                <a href="#"><strong>서울</strong></a>
+                                <a href="#"><strong>부산</strong></a>
+                                <a href="#"><strong>대구</strong></a>
+                                <a href="#"><strong>인천</strong></a>
+                                <a href="#"><strong>광주</strong></a>
+                                <a href="#"><strong>대전</strong></a>
+                                <a href="#"><strong>울산</strong></a>
+                                <a href="#"><strong>세종</strong></a>
+                                <a href="#"><strong>경기</strong></a>
+                                <a href="#"><strong>강원</strong></a>
+                                <a href="#"><strong>충북</strong></a>
+                                <a href="#"><strong>충남</strong></a>
+                                <a href="#"><strong>전북</strong></a>
+                                <a href="#"><strong>전남</strong></a>
+                                <a href="#"><strong>경북</strong></a>
+                                <a href="#"><strong>경남</strong></a>
+                                <a href="#"><strong>제주</strong></a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="count">
+                    <div class="count_scroll">
+                        <div class="v_status">
+                            <div class="bx">
+                                <strong class="ico_status as_count_complete"></strong>
+                                <span class="tit_status">제주 최종투표율</span>
+                                <span class="pnt_status"><span class="per">72.3%</span></span>
+                            </div>
+                        </div>
+                        <div class="count_others">
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                            <div class="count_others_item party730">
+                                <div class="count_others_ranking"><em>4</em><span>위</span></div>
+                                <div class="count_others_image">
+                                    <div class="count_others_image_inner"><img src="https://via.placeholder.com/40"
+                                            width="40" height="40" alt="심상정"></div>
+                                </div>
+                                <div class="count_others_text">
+                                    <div class="count_others_name">심상정</div>
+                                    <div class="count_others_party">정의당</div>
+                                </div>
+                                <div class="count_others_graph">
+                                    <div class="count_others_bar">
+                                        <span class="count_others_bar_inner " style="width:8.5%"></span>
+                                        <strong class="count_others_per">8.5%</strong>
+                                    </div>
+                                    <div class="count_others_num">31,716<i>표</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">시·도</button>
+                        </div>
+                        <div class="selectbox_wrp">
+                            <button class="selectbox_btn">구·시·군</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

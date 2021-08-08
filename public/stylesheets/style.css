@@ -20,6 +20,11 @@ a {
     cursor: pointer;
 }
 
+a:visited {
+    color: #888;
+}
+
+i,
 address,
 em {
     font-style: normal;
@@ -30,6 +35,15 @@ input {
     -webkit-border-radius: 0;
     border-radius: 0;
     background: 0 0;
+}
+
+img,
+fieldset {
+    border: 0;
+}
+
+img {
+    vertical-align: top;
 }
 
 body,
@@ -112,7 +126,9 @@ table caption {
 }
 
 .district_form .selectbox .selectbox_btn::after,
-.district_content .title_info::before {
+.district_content .title_info::before,
+.ico_status,
+.ico_status.as_count_complete {
     background-image: url("../images/sp_election_vote.png");
     -webkit-background-size: 645px 643px;
     background-size: 645px 643px;
@@ -153,4 +169,13 @@ table caption {
 
 .flick-container .wrap {
     width: 100%;
+}
+
+.sc {
+    clear: both;
+    position: relative;
+}
+
+.sc ::-webkit-scrollbar {
+    display: none;
 }
