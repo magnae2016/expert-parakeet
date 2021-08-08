@@ -163,8 +163,8 @@ table caption {
 .flick-container {
     position: relative;
     overflow-y: auto;
-    margin-top: 58px;
-    padding-bottom: 58px;
+    /* margin-top: 58px; */
+    padding-bottom: 57px;
 }
 
 .flick-container .wrap {

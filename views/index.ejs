@@ -1,11 +1,1772 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link href="/stylesheets/mcs_common_module_210806.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/contents.css" rel="stylesheet">
+    <link href="/stylesheets/header.css" rel="stylesheet">
+    <link href="/stylesheets/footer.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="ct" role="main">
+        <div class="flick-container" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0">
+            <!-- header -->
+            <header class="header">
+                <div id="sch" class="sch">
+                    <section>
+                        <div class="sch_wrap">
+                            <div class="sch_inner">
+                                <div class="sch_logo">
+                                    <a href="/" class="sch_logo_nepes">
+                                        <span class="sch_ico_mask"></span>
+                                    </a>
+                                </div>
+                                <form>
+                                    <div class="sch_input_wrap">
+                                        <input id="query" type="search" name="query" title="장비명을 입력해주세요."
+                                            placeholder="장비명을 입력해주세요." class="sch_input" autocomplete="off">
+                                        <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                    </div>
+                                    <button class="sch_btn_search">
+                                        <span class="sch_ico_mask"></span>
+                                    </button>
+                                    <div class="sch_region"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </header><!-- /END header -->
+            <div class="wrap">
+                <!-- .ce_index -->
+                <div class="ce_index">
+                    <div>
+                        <div class="ce_index_wrap">
+                            <ul class="ce_index_list">
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="true" href="#list-item-1">
+                                        <div class="ce_tit">최신 알람</div>
+                                        <div class="ce_price">MBTI 현황</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false" href="#list-item-2">
+                                        <div class="ce_tit">장비별</div>
+                                        <div class="ce_price">알람 현황</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false" href="#list-item-3">
+                                        <div class="ce_tit">날짜별</div>
+                                        <div class="ce_price">알람 현황</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false" href="#list-item-4">
+                                        <div class="ce_tit">알람별</div>
+                                        <div class="ce_price">장비 현황</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false" href="#list-item-5">
+                                        <div class="ce_tit">장비 알람</div>
+                                        <div class="ce_price">Summary</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                                <li class="ce_index_item" role="presentation">
+                                    <a class="ce_index_a" aria-selected="false" href="#list-item-6">
+                                        <div class="ce_tit">액션별</div>
+                                        <div class="ce_price">소요시간 현황</div>
+                                        <span class="ce_gap_rate ce_dec">-0.18%</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /END .ce_index -->
+                <!-- .comp_economy -->
+                <div id="list-item-1" class="grid1">
+                    <div class="comp_economy">
+                        <div class="ce_title_wrap">
+                            <div class="ce_title_a">
+                                <h3 class="ce_title">
+                                    <span class="ce_main">MBTI 현황</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="ce_stock_wrap" role="tabpanel">
+                            <ul class="ce_elist">
+                                <li class="ce_eitem ce_announce">
+                                    <a class="ce_ea">
+                                        <span class="ce_time">08.08</span>
+                                        <div class="ce_emw"></div>
+                                        <div class="ce_etw">
+                                            <div class="ce_etit"><em class="ce_country">TSK</em>UTSP02</div>
+                                            <div class="ce_etw">
+                                                <div class="ce_einfo">
+                                                    <span class="info">
+                                                        <strong class="ce_st">MBTI</strong>24분</span>
+                                                    <span class="info">2021.08.08<span class="ce_gap">집계</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="ce_eitem">
+                                    <a class="ce_ea">
+                                        <span class="ce_time">08.07</span>
+                                        <div class="ce_emw"></div>
+                                        <div class="ce_etw">
+                                            <div class="ce_etit"><em class="ce_country">TSK</em>T2K83</div>
+                                            <div class="ce_etw">
+                                                <div class="ce_einfo">
+                                                    <span class="info">
+                                                        <strong class="ce_st">MBTI</strong>93분</span>
+                                                    <span class="info">2021.08.07<span class="ce_gap">집계</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="ce_eitem">
+                                    <a class="ce_ea">
+                                        <span class="ce_time">08.07</span>
+                                        <div class="ce_emw"></div>
+                                        <div class="ce_etw">
+                                            <div class="ce_etit"><em class="ce_country">TSK</em>ETS09</div>
+                                            <div class="ce_etw">
+                                                <div class="ce_einfo">
+                                                    <span class="info">
+                                                        <strong class="ce_st">MBTI</strong>80분</span>
+                                                    <span class="info">2021.08.07<span class="ce_gap">집계</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="ce_info">
+                                <button type="button" class="ce_btn_more ce_pagination">MBTI 현황 더보기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /END .comp_economy -->
+                <!-- .cs_voting_rate -->
+                <section id="list-item-2" class="sc cs">
+                    <div class="sc cs_voting_rate">
+                        <div class="api_subject_bx">
+                            <div class="api_title_area">
+                                <h2 class="api_title ce_main">장비별 알림 현황</h2>
+                            </div>
+                            <div class="num_statement">
+                                <div class="graph_box">
+                                    <div class="legend_area">
+                                        <ul>
+                                            <li class="e_president">ALL</li>
+                                            <li class="e_local">TSK</li>
+                                            <li class="e_general">OPUS</li>
+                                        </ul>
+                                    </div>
+                                    <div class="graph_area">
+                                        <div class="graph_header">
+                                            <ol>
+                                                <li>50K</li>
+                                                <li>40K</li>
+                                                <li>30K</li>
+                                                <li>20K</li>
+                                                <li>10K</li>
+                                                <li>0K</li>
+                                            </ol>
+                                        </div>
+                                        <div class="barChart graph_scroll_wrap">
+                                            <div class="inner">
+                                                <div class="list_scroll">
+                                                    <div class="bar item e_local on">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:88.7%"> <span
+                                                                        class="num">44.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">ETS04</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:80.7%"> <span
+                                                                        class="num">42.2</span></span>
+                                                            </div>
+                                                            <div class="num_title">ETS10</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:74.7%"> <span
+                                                                        class="num">38.1</span></span>
+                                                            </div>
+                                                            <div class="num_title">T2K83</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:70.7%"> <span
+                                                                        class="num">36.8</span></span>
+                                                            </div>
+                                                            <div class="num_title">UTSP01</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:67.7%"> <span
+                                                                        class="num">32.9</span></span>
+                                                            </div>
+                                                            <div class="num_title">ETS03</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:61.7%"> <span
+                                                                        class="num">42.2</span></span>
+                                                            </div>
+                                                            <div class="num_title">ITS02</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:58.7%"> <span
+                                                                        class="num">42.2</span></span>
+                                                            </div>
+                                                            <div class="num_title">ETS10</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:52.7%"> <span
+                                                                        class="num">37.1</span></span>
+                                                            </div>
+                                                            <div class="num_title">T2K21</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:42.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">T2K42</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:32.7%"> <span
+                                                                        class="num">52.7</span></span>
+                                                            </div>
+                                                            <div class="num_title">UTSP05</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table_box">
+                                    <div class="table_title">
+                                        <h3>TSK 장치 알람 수</h3>
+                                        <div class="sort_tab">
+                                            <div class="sub_option_area">
+                                                <a class="sub_option" aria-selected="true" role="option">장비명</a>
+                                                <a class="sub_option" aria-selected="false" role="option">내림차순</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table_content">
+                                        <div class="table_header">
+                                            <table>
+                                                <caption>투표율제목</caption>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>지역</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>투표율</th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table_body">
+                                            <div class="inner">
+                                                <div class="api_list_scroll">
+                                                    <table>
+                                                        <caption>투표율</caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ETS01</th>
+                                                                <th scope="col">ETS02</th>
+                                                                <th scope="col">ETS03</th>
+                                                                <th scope="col">ETS04</th>
+                                                                <th scope="col">ETS05</th>
+                                                                <th scope="col">ETS06</th>
+                                                                <th scope="col">ETS07</th>
+                                                                <th scope="col">ETS08</th>
+                                                                <th scope="col">ETS09</th>
+                                                                <th scope="col">ETS10</th>
+                                                                <th scope="col">ETS11</th>
+                                                                <th scope="col">ETS12</th>
+                                                                <th scope="col">ETS13</th>
+                                                                <th scope="col">ETS14</th>
+                                                                <th scope="col">ETS15</th>
+                                                                <th scope="col">ETS16</th>
+                                                                <th scope="col">ETS17</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1,765</td>
+                                                                <td>265</td>
+                                                                <td>1,348</td>
+                                                                <td>1,348</td>
+                                                                <td class="highest">1,694</td>
+                                                                <td>5,324</td>
+                                                                <td>244</td>
+                                                                <td>2,424</td>
+                                                                <td>7,426</td>
+                                                                <td>1,965</td>
+                                                                <td>1,155</td>
+                                                                <td>1,846</td>
+                                                                <td>967</td>
+                                                                <td>230</td>
+                                                                <td class="lowest">3</td>
+                                                                <td>855</td>
+                                                                <td>3,598</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- /END .cs_voting_rate -->
+                <!-- .cs_voting_rate -->
+                <section id="list-item-3" class="sc cs mcs_common_module" style="margin: 10px 0;">
+                    <div class="sc cs_voting_rate">
+                        <div class="api_subject_bx">
+                            <div class="api_title_area">
+                                <h2 class="api_title ce_main">날짜별 알람 현황</h2>
+                            </div>
+                            <div class="district_form" style="padding: 0 18px;">
+                                <div class="selectbox">
+                                    <div class="selectbox_wrp" style="width: 26%;">
+                                        <button class="selectbox_btn">TSK</button>
+                                    </div>
+                                    <div class="selectbox_wrp" style="width: 74%;">
+                                        <button class="selectbox_btn">Card changer (TSEN)</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="num_statement" style="margin-top: 19px;">
+                                <div class="line_graph">
+                                    <div class="chart_con">
+                                        <div>
+                                            <div class="yAxisReplication bb">
+                                                <svg style="width: 57px; height: 254px;">
+                                                    <g class="bb-axis bb-axis-y" clip-path=""
+                                                        transform="translate(56.5, 4.5)"
+                                                        style="visibility: visible; opacity: 1; display: block;">
+                                                        <line x1="0" x2="0" y1="0.5" y2="200.5"
+                                                            class="bb-custom-tick-line"></line>
+                                                        <g class="tick" style="opacity: 1;"
+                                                            transform="translate(0,200)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">-5.92</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;"
+                                                            transform="translate(0,176)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">-2.96</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;"
+                                                            transform="translate(0,151)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">0.00</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;"
+                                                            transform="translate(0,126)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">2.96</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;"
+                                                            transform="translate(0,101)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">5.92</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;" transform="translate(0,76)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">8.88</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;" transform="translate(0,51)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0">
+                                                                <tspan x="-9" dy="3">11.84</tspan>
+                                                            </text>
+                                                        </g>
+                                                        <g class="tick" style="opacity: 1;" transform="translate(0,1)">
+                                                            <line x2="-6"></line><text x="-9" style="text-anchor: end;"
+                                                                y="0" class="bb-custom-axis-y-label">
+                                                            </text>
+                                                        </g>
+                                                        <path class="domain" d="M-6,1H0V200H-6"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="scroll_wrapper">
+                                                <div class="origin _origin bb">
+                                                    <svg style="overflow: hidden; display: block;" width="2055"
+                                                        height="254">
+                                                        <g class="bb-custom-group">
+                                                            <rect x="62" y="5" height="200" width="1992"
+                                                                class="bb-custom-background"></rect>
+                                                            <line x1="61.5" x2="2054.5" y1="5.5" y2="5.5"
+                                                                class="bb-custom-tick-line"></line>
+                                                            <line x1="0.5" x2="2054.5" y1="204.5" y2="204.5"
+                                                                class="bb-custom-tick-line"></line>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="bb-1628427965465-clip-xaxis">
+                                                                <rect x="-62" y="-20" width="2086" height="70"></rect>
+                                                            </clipPath>
+                                                            <clipPath id="bb-1628427965465-clip-yaxis">
+                                                                <rect x="-60" y="-4" width="81" height="224"></rect>
+                                                            </clipPath>
+                                                            <clipPath id="bb-1628427965465-clip-grid">
+                                                                <rect width="1993" height="200"></rect>
+                                                            </clipPath>
+                                                            <clipPath id="bb-1628427965465-clip-subchart">
+                                                                <rect width="1993" height="0"></rect>
+                                                            </clipPath>
+                                                        </defs>
+                                                        <g transform="translate(61.5, 4.5)"><text
+                                                                class="bb-text bb-empty" text-anchor="middle"
+                                                                dominant-baseline="middle" x="996.5" y="100"
+                                                                style="opacity: 0;"></text>
+                                                            <rect class="bb-zoom-rect" width="1993" height="200"
+                                                                style="opacity: 0;"></rect>
+                                                            <g clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip)"
+                                                                class="bb-regions" style="visibility: visible;"></g>
+                                                            <g clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip-grid)"
+                                                                class="bb-grid" style="visibility: visible;">
+                                                                <g class="bb-xgrid-focus">
+                                                                    <line class="bb-xgrid-focus" x1="1904" x2="1904"
+                                                                        y1="0" y2="200" style="visibility: hidden;">
+                                                                    </line>
+                                                                </g>
+                                                            </g>
+                                                            <g clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip-grid)"
+                                                                class="bb-grid bb-grid-lines">
+                                                                <g class="bb-xgrid-lines"></g>
+                                                                <g class="bb-ygrid-lines">
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="176" y2="176"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="176"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="151" y2="151"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="151"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="126" y2="126"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="126"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="101" y2="101"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="101"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="76" y2="76"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="76"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="51" y2="51"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="51"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="26" y2="26"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="26"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="1" y2="1"></line><text text-anchor="end"
+                                                                            transform="" dx="-4" dy="-5"
+                                                                            style="opacity: 1;" x="1993" y="1"></text>
+                                                                    </g>
+                                                                    <g class="bb-ygrid-line bb-custom-ygrid-line-zero">
+                                                                        <line style="opacity: 1;" x1="0" x2="1993"
+                                                                            y1="151" y2="151"></line><text
+                                                                            text-anchor="end" transform="" dx="-4"
+                                                                            dy="-5" style="opacity: 1;" x="1993"
+                                                                            y="151"></text>
+                                                                    </g>
+                                                                    <line></line>
+                                                                </g>
+                                                            </g>
+                                                            <g class="bb-chart"
+                                                                clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip)">
+                                                                <g class="bb-chart-lines">
+                                                                    <g class="bb-chart-line bb-target bb-target-line1"
+                                                                        style="opacity: 1; pointer-events: none;">
+                                                                        <g
+                                                                            class=" bb-shapes bb-shapes-line1 bb-lines bb-lines-line1">
+                                                                            <path
+                                                                                class=" bb-shape bb-shape bb-line bb-line-line1"
+                                                                                style="stroke: rgb(10, 190, 22); opacity: 1;"
+                                                                                d="M33,76.63344594594594L88,79.32263513513513L143,59.23775337837836L198,73.01984797297297L253,107.72719594594595L308,109.74408783783784L363,126.9717060810811L418,119.99662162162163L473,109.74408783783784L528,155.7964527027027L583,108.65160472972974L638,96.63429054054055L693,91.8441722972973L748,105.96241554054055L803,87.3902027027027L858,84.44890202702703L913,100.07981418918921L968,113.86190878378379L1023,141.76224662162164L1078,96.38217905405406L1133,97.89484797297297L1189,176.4695945945946L1244,131.00548986486487L1299,92.43243243243245L1354,87.64231418918918L1409,95.03758445945945L1464,64.44805743243242L1519,52.262668918918905L1574,74.86866554054052L1629,53.523226351351326L1684,90.91976351351352L1739,82.76815878378379L1794,84.53293918918918L1849,134.19890202702703L1904,59.82601351351349L1959,75.87711148648648">
+                                                                            </path>
+                                                                        </g>
+                                                                        <g
+                                                                            class=" bb-shapes bb-shapes-line1 bb-areas bb-areas-line1">
+                                                                            <path
+                                                                                class=" bb-shape bb-shape bb-area bb-area-line1"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 0.20000000298023224;"
+                                                                                d="M 33 76.63344594594594"></path>
+                                                                        </g>
+                                                                        <g class=" bb-shapes bb-shapes-line1 bb-circles bb-circles-line1"
+                                                                            style="cursor: pointer;">
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-0 bb-circle bb-circle-0"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="33" cy="76.63344594594594"></circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-1 bb-circle bb-circle-1"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="88" cy="79.32263513513513"></circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-2 bb-circle bb-circle-2"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="143" cy="59.23775337837836">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-3 bb-circle bb-circle-3"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="198" cy="73.01984797297297">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-4 bb-circle bb-circle-4"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="253" cy="107.72719594594595">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-5 bb-circle bb-circle-5"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="308" cy="109.74408783783784">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-6 bb-circle bb-circle-6"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="363" cy="126.9717060810811">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-7 bb-circle bb-circle-7"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="418" cy="119.99662162162163">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-8 bb-circle bb-circle-8"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="473" cy="109.74408783783784">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-9 bb-circle bb-circle-9"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="528" cy="155.7964527027027">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-10 bb-circle bb-circle-10"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="583" cy="108.65160472972974">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-11 bb-circle bb-circle-11"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="638" cy="96.63429054054055">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-12 bb-circle bb-circle-12"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="693" cy="91.8441722972973"></circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-13 bb-circle bb-circle-13"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="748" cy="105.96241554054055">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-14 bb-circle bb-circle-14"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="803" cy="87.3902027027027"></circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-15 bb-circle bb-circle-15"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="858" cy="84.44890202702703">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-16 bb-circle bb-circle-16"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="913" cy="100.07981418918921">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-17 bb-circle bb-circle-17"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="968" cy="113.86190878378379">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-18 bb-circle bb-circle-18"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1023" cy="141.76224662162164">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-19 bb-circle bb-circle-19"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1078" cy="96.38217905405406">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-20 bb-circle bb-circle-20"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1133" cy="97.89484797297297">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-21 bb-circle bb-circle-21"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1189" cy="176.4695945945946">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-22 bb-circle bb-circle-22"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1244" cy="131.00548986486487">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-23 bb-circle bb-circle-23"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1299" cy="92.43243243243245">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-24 bb-circle bb-circle-24"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1354" cy="87.64231418918918">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-25 bb-circle bb-circle-25"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1409" cy="95.03758445945945">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-26 bb-circle bb-circle-26"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1464" cy="64.44805743243242">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-27 bb-circle bb-circle-27"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1519" cy="52.262668918918905">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-28 bb-circle bb-circle-28"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1574" cy="74.86866554054052">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-29 bb-circle bb-circle-29"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1629" cy="53.523226351351326">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class=" bb-shape bb-shape-30 bb-circle bb-circle-30"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1684" cy="90.91976351351352">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class="bb-shape bb-shape-31 bb-circle bb-circle-31"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1739" cy="82.76815878378379">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class="bb-shape bb-shape-32 bb-circle bb-circle-32"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1794" cy="84.53293918918918">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class="bb-shape bb-shape-33 bb-circle bb-circle-33"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1849" cy="134.19890202702703">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class="bb-shape bb-shape-34 bb-circle bb-circle-34"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1904" cy="59.82601351351349">
+                                                                            </circle>
+                                                                            <circle
+                                                                                class="bb-shape bb-shape-35 bb-circle bb-circle-35"
+                                                                                r="3"
+                                                                                style="fill: rgb(10, 190, 22); opacity: 1;"
+                                                                                cx="1959" cy="75.87711148648648">
+                                                                            </circle>
+                                                                        </g>
+                                                                        <image width="16" height="16"
+                                                                            xlink:href="https://ssl.pstatic.net/sstatic/keypage/outside/scui/economy_chart/im/img_line1.png"
+                                                                            style="" x="1896" y="51.82601351351349">
+                                                                        </image>
+                                                                    </g>
+                                                                </g>
+                                                                <g class="bb-chart-arcs"
+                                                                    transform="translate(996.5, 95)"></g>
+                                                                <g class="bb-chart-texts">
+                                                                    <g class="bb-chart-text bb-target bb-target-line1"
+                                                                        style="opacity: 1; pointer-events: none;">
+                                                                        <g class=" bb-texts bb-texts-line1"><text
+                                                                                class=" bb-text bb-text-0"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="33"
+                                                                                y="65.63344594594594">8.76</text><text
+                                                                                class=" bb-text bb-text-1"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="88"
+                                                                                y="68.32263513513513">8.44</text><text
+                                                                                class=" bb-text bb-text-2"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="143"
+                                                                                y="48.23775337837836">10.83</text><text
+                                                                                class=" bb-text bb-text-3"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="198"
+                                                                                y="62.01984797297297">9.19</text><text
+                                                                                class=" bb-text bb-text-4"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="253"
+                                                                                y="96.72719594594595">5.06</text><text
+                                                                                class=" bb-text bb-text-5"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="308"
+                                                                                y="98.74408783783784">4.82</text><text
+                                                                                class=" bb-text bb-text-6"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="363"
+                                                                                y="115.9717060810811">2.77</text><text
+                                                                                class=" bb-text bb-text-7"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="418"
+                                                                                y="108.99662162162163">3.60</text><text
+                                                                                class=" bb-text bb-text-8"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="473"
+                                                                                y="98.74408783783784">4.82</text><text
+                                                                                class=" bb-text bb-text-9"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="528"
+                                                                                y="144.7964527027027">-0.66</text><text
+                                                                                class=" bb-text bb-text-10"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="583"
+                                                                                y="97.65160472972974">4.95</text><text
+                                                                                class=" bb-text bb-text-11"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="638"
+                                                                                y="85.63429054054055">6.38</text><text
+                                                                                class=" bb-text bb-text-12"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="693"
+                                                                                y="80.8441722972973">6.95</text><text
+                                                                                class=" bb-text bb-text-13"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="748"
+                                                                                y="94.96241554054055">5.27</text><text
+                                                                                class=" bb-text bb-text-14"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="803"
+                                                                                y="76.3902027027027">7.48</text><text
+                                                                                class=" bb-text bb-text-15"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="858"
+                                                                                y="73.44890202702703">7.83</text><text
+                                                                                class=" bb-text bb-text-16"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="913"
+                                                                                y="89.07981418918921">5.97</text><text
+                                                                                class=" bb-text bb-text-17"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="968"
+                                                                                y="102.86190878378379">4.33</text><text
+                                                                                class=" bb-text bb-text-18"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1023"
+                                                                                y="130.76224662162164">1.01</text><text
+                                                                                class=" bb-text bb-text-19"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1078"
+                                                                                y="85.38217905405406">6.41</text><text
+                                                                                class=" bb-text bb-text-20"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1133"
+                                                                                y="86.89484797297297">6.23</text><text
+                                                                                class=" bb-text bb-text-21"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1189"
+                                                                                y="165.4695945945946">-3.12</text><text
+                                                                                class=" bb-text bb-text-22"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1244"
+                                                                                y="120.00548986486487">2.29</text><text
+                                                                                class=" bb-text bb-text-23"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1299"
+                                                                                y="81.43243243243245">6.88</text><text
+                                                                                class=" bb-text bb-text-24"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1354"
+                                                                                y="76.64231418918918">7.45</text><text
+                                                                                class=" bb-text bb-text-25"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1409"
+                                                                                y="84.03758445945945">6.57</text><text
+                                                                                class=" bb-text bb-text-26"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1464"
+                                                                                y="53.44805743243242">10.21</text><text
+                                                                                class=" bb-text bb-text-27"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1519"
+                                                                                y="41.262668918918905">11.66</text><text
+                                                                                class=" bb-text bb-text-28"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1574"
+                                                                                y="63.86866554054052">8.97</text><text
+                                                                                class=" bb-text bb-text-29"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1629"
+                                                                                y="42.523226351351326">11.51</text><text
+                                                                                class=" bb-text bb-text-30"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1684"
+                                                                                y="79.91976351351352">7.06</text><text
+                                                                                class=" bb-text bb-text-31"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1739"
+                                                                                y="71.76815878378379">8.03</text><text
+                                                                                class=" bb-text bb-text-32"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1794"
+                                                                                y="73.53293918918918">7.82</text><text
+                                                                                class=" bb-text bb-text-33"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1849"
+                                                                                y="123.19890202702703">1.91</text><text
+                                                                                class=" bb-text bb-text-34"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1904"
+                                                                                y="48.82601351351349">10.76</text><text
+                                                                                class=" bb-text bb-text-35"
+                                                                                text-anchor="middle"
+                                                                                style="stroke: none; fill: rgb(10, 190, 22); fill-opacity: 1;"
+                                                                                x="1959"
+                                                                                y="64.87711148648648">8.85</text></g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                            <g class="bb-axis bb-axis-x"
+                                                                clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip-xaxis)"
+                                                                transform="translate(0, 200)"
+                                                                style="visibility: visible; opacity: 1;"><text
+                                                                    class="bb-axis-x-label" transform=""
+                                                                    style="text-anchor: end;" x="1993" dx="-0.5em"
+                                                                    dy="-0.5em"></text>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(33, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'18.09.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(88, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'18.10.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(143, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'18.11.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(198, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'18.12.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(253, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.01.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(308, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.02.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(363, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.03.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(418, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.04.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(473, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.05.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(528, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.06.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(583, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.07.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(638, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.08.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(693, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.09.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(748, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.10.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(803, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.11.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(858, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'19.12.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(913, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.01.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(968, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.02.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1023, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.03.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1078, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.04.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1133, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.05.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1189, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.06.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1244, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.07.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1299, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.08.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1354, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.09.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1409, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.10.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1464, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.11.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1519, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'20.12.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1574, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.01.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1629, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.02.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1684, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.03.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1739, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.04.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1794, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.05.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1849, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.06.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1904, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.07.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(1959, 0)">
+                                                                    <line y2="6" x1="28" x2="28"></line><text y="9"
+                                                                        x="0"
+                                                                        style="text-anchor: middle; display: block;"
+                                                                        transform="">
+                                                                        <tspan x="0" dy=".71em" dx="0">'21.08.</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <path class="domain" d="M0,6V0H1993V6"></path>
+                                                            </g>
+                                                            <g class="bb-axis bb-axis-y"
+                                                                clip-path="url(https://m.search.naver.com/search.naver?where=m&amp;sm=mtb_etc&amp;mra=blNH&amp;qvt=0&amp;query=%ED%95%9C%EA%B5%AD%20%EA%B2%BD%EC%83%81%EC%88%98%EC%A7%80#bb-1628427965465-clip-yaxis)"
+                                                                transform="translate(0, 0)"
+                                                                style="visibility: visible; opacity: 0; display: block;">
+                                                                <line x1="0" x2="0" y1="0.5" y2="200.5"
+                                                                    class="bb-custom-tick-line"></line>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,200)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">-5.92</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,176)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">-2.96</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,151)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">0.00</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,126)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">2.96</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,101)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">5.92</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,76)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">8.88</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,51)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0">
+                                                                        <tspan x="-9" dy="3">11.84</tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,1)">
+                                                                    <line x2="-6"></line><text x="-9"
+                                                                        style="text-anchor: end;" y="0"
+                                                                        class="bb-custom-axis-y-label">
+                                                                    </text>
+                                                                </g>
+                                                                <path class="domain" d="M-6,1H0V200H-6"></path>
+                                                            </g>
+                                                            <g class="bb-axis bb-axis-y2" transform="translate(1993, 0)"
+                                                                style="visibility: hidden; opacity: 1;"><text
+                                                                    class="bb-axis-y2-label" transform="rotate(-90)"
+                                                                    style="text-anchor: end;" x="0" dx="-0.5em"
+                                                                    dy="-0.5em"></text>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,200)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,181)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,161)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,121)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,101)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,41)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,21)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,1)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,141)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,81)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <g class="tick" style="opacity: 1;"
+                                                                    transform="translate(0,61)">
+                                                                    <line x2="6" y2="0"></line><text x="9"
+                                                                        style="text-anchor: start;" y="0">
+                                                                        <tspan x="9" dy="3"></tspan>
+                                                                    </text>
+                                                                </g>
+                                                                <path class="domain" d="M6,1H0V200H6"></path>
+                                                            </g>
+                                                        </g>
+                                                        <g style="visibility: hidden;" transform="translate(0, 254)">
+                                                        </g><text class="bb-title" x="1027.5" y="0"></text>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- /END .cs_voting_rate -->
+                <!-- .district_content -->
+                <div id="list-item-4" class="district_content">
+                    <div class="title">
+                        <h3 class="title_txt ce_main">알람별 장비 현황 TOP5</h3>
+                    </div>
+                    <div class="district_form">
+                        <div class="selectbox">
+                            <div class="selectbox_wrp" style="width: 26%;">
+                                <button class="selectbox_btn">TSK</button>
+                            </div>
+                            <div class="selectbox_wrp" style="width: 74%;">
+                                <button class="selectbox_btn">Card changer (TSEN)</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <ul class="status_list">
+                            <li class="status_item party100 is_first">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">T2K25</span>
+                                    <em class="candidate_party">TSK</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">72.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:72.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,781,345</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">ETS04</span>
+                                    <em class="candidate_party">TSK</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">22.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:22.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">2,234,132</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">T2K83</span>
+                                    <em class="candidate_party">TSK</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">5.8<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:5.8%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">1,943,433</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">ETS08</span>
+                                    <em class="candidate_party">TSK</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">1.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:1.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">43,433</span>
+                                </div>
+                            </li>
+                            <li class="status_item party100">
+                                <div class="district_candidate">
+                                    <span class="candidate_name">ETS11</span>
+                                    <em class="candidate_party">TSK</em>
+                                </div>
+                                <div class="district_rate">
+                                    <span class="rate_txt">1.3<span class="rate_per">%</span></span>
+                                </div>
+                                <div class="district_graph">
+                                    <div class="graph_bar">
+                                        <span class="graph_bg" style="left:1.3%"></span>
+                                    </div>
+                                </div>
+                                <div class="district_count">
+                                    <span class="count_txt">37,433</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ce_info">
+                        <button type="button" class="ce_btn_more">더 보기</button>
+                    </div>
+                </div><!-- /END .district_content -->
+                <!-- .cs_voting_rate -->
+                <section id="list-item-5" class="sc cs" style="margin-top: 10px;">
+                    <div class="sc cs_voting_rate">
+                        <div class="api_subject_bx">
+                            <div class="api_title_area">
+                                <h2 class="api_title ce_main">장비 알람 Summary</h2>
+                            </div>
+                            <div class="num_statement">
+                                <div class="graph_box">
+                                    <div class="legend_area">
+                                        <ul>
+                                            <li class="e_local">TSK</li>
+                                            <li class="e_general">OPUS</li>
+                                        </ul>
+                                    </div>
+                                    <div class="graph_area">
+                                        <div class="graph_header">
+                                            <ol>
+                                                <li>50K</li>
+                                                <li>40K</li>
+                                                <li>30K</li>
+                                                <li>20K</li>
+                                                <li>10K</li>
+                                                <li>0K</li>
+                                            </ol>
+                                        </div>
+                                        <div class="barChart graph_scroll_wrap">
+                                            <div class="inner">
+                                                <div class="list_scroll">
+                                                    <div class="bar item e_local on">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:48.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:23.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">08.08</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:28.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:73.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">ETS10</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:58.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:48.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">T2K83</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:18.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:68.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">UTSP01</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:38.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:18.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">ETS03</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:18.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:98.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">ITS02</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:88.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:98.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">ETS10</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:23.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:65.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">T2K21</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:18.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:34.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">T2K42</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bar item e_local">
+                                                        <a>
+                                                            <div class="graph_wrap">
+                                                                <span class="graph_bar" style="height:48.7%"></span>
+                                                                <span class="graph_bar"
+                                                                    style="height:58.7%; background-color: #6ec9dc; border-top: 1px solid #5ebccf;"></span>
+                                                            </div>
+                                                            <div class="num_title">UTSP05</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>&nbsp;</p>
+                                <div class="ce_info">
+                                    <button type="button" class="ce_btn_more">더 보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- /END .cs_voting_rate -->
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div>
+                <div class="district_form">
+                    <div class="selectbox">
+                        <div class="selectbox_wrp" style="width: 26%;">
+                            <button class="selectbox_btn">TSK</button>
+                        </div>
+                        <div class="selectbox_wrp" style="width: 37%;">
+                            <button class="selectbox_btn">2021-08-08</button>
+                        </div>
+                        <div class="selectbox_wrp" style="width: 37%;">
+                            <button class="selectbox_btn">2021-08-08</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /END footer -->
+    </div>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) { if (event.touches.length > 1) { event.preventDefault(); } }, false);
+        var lastTouchEnd = 0; document.documentElement.addEventListener('touchend', function (event) { var now = (new Date()).getTime(); if (now - lastTouchEnd <= 300) { event.preventDefault(); } lastTouchEnd = now; }, false);
+    </script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
