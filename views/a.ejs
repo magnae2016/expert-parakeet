@@ -1,0 +1,1467 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/header.css" rel="stylesheet">
+    <style>
+        .api_subject_bx {
+            margin-top: 9px;
+            border: 1px solid #e2e5e8;
+            border-width: 1px 0;
+            background-color: #fff;
+        }
+
+        .api_title_area {
+            position: relative;
+        }
+
+        .api_title_area .api_title {
+            height: 50px;
+            padding: 0 18px;
+            font-size: 18px;
+            line-height: 51px;
+            color: #000000;
+            letter-spacing: -0.3px;
+            font-weight: bold;
+        }
+
+        .api_title_area .api_title_sub {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            font-size: 16px;
+            line-height: 51px;
+            text-align: right;
+        }
+
+        .mcs_subway .button_refresh {
+            position: relative;
+            display: block;
+            width: 48px;
+            height: 100%;
+            border-left: 1px solid #ecf0f2;
+        }
+
+        .mcs_subway .button_refresh:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            margin-top: -9px;
+            width: 18px;
+            height: 18px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: 0 -180px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+        }
+
+        .subway {
+            background-color: #ffffff;
+        }
+
+        .station_info_top {
+            padding-bottom: 18px;
+            overflow: hidden;
+            background-color: #f8fafb;
+            border-top: 1px solid #ecf0f2;
+        }
+
+        .station_notice_area {
+            display: table;
+            padding: 0 18px;
+            min-width: 290px;
+            margin-top: 33px;
+        }
+
+        .mcs_subway .station_notice_area .station_sub {
+            position: relative;
+            display: table-cell;
+            width: 50%;
+            min-width: 60px;
+            vertical-align: top;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.last {
+            width: 100%;
+        }
+
+        .mcs_subway .station_notice_area .station_sub .station {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 30px;
+            padding-top: 5px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            z-index: 4;
+            background-color: #3cb44a;
+        }
+
+        .mcs_subway .station_notice_area .station_sub .link_station {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            color: #fff;
+            vertical-align: top;
+            word-wrap: break-word;
+            font-size: 15px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        .mcs_subway .station_notice_area .station_sub .link_station:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            margin-top: -5px;
+            width: 5px;
+            height: 9px;
+        }
+
+        .mcs_subway .station_notice_area .station_sub .link_station .name {
+            overflow: hidden;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.prev .station {
+            left: 0;
+            right: -10px;
+            padding-left: 20px;
+            padding-right: 15px;
+            border-radius: 15px 0 0 15px;
+            -webkit-border-radius: 15px 0 0 15px;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.prev .link_station {
+            text-align: left;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.prev .link_station:before {
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: -81px -103px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+            left: -10px;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.next .station {
+            left: -10px;
+            right: 0;
+            padding-right: 20px;
+            padding-left: 15px;
+            border-radius: 0 15px 15px 0;
+            -webkit-border-radius: 0 15px 15px 0;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.next .link_station {
+            text-align: right;
+        }
+
+        .mcs_subway .station_notice_area .station_sub.next .link_station:before {
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: -73px -103px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+            right: -10px;
+        }
+
+        .mcs_subway .station_notice_area .station_main {
+            position: relative;
+            top: -10px;
+        }
+
+        .mcs_subway .station_notice_area .station_main:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            bottom: 0;
+            left: 50%;
+            display: inline-block;
+            margin-left: -88px;
+            background: url(/images/shadow.png) no-repeat;
+            width: 175px;
+            height: 30px;
+            z-index: 10;
+            background-size: 175px 30px;
+            -webkit-background-size: 175px 30px;
+        }
+
+        .mcs_subway .station_notice_area .station_main:first-child:before {
+            background-position: -88px 0;
+            margin-left: 0;
+        }
+
+        .mcs_subway .station_notice_area .station_main:last-child:before {
+            width: 88px;
+        }
+
+        .mcs_subway .station_notice_area .station_main .main_inner {
+            position: relative;
+            display: inline-block;
+            min-width: 166px;
+            height: 49px;
+            background-image: none;
+            text-align: center;
+            vertical-align: top;
+            border-radius: 33px;
+            z-index: 100;
+            background-color: #3cb44a;
+        }
+
+        .mcs_subway .station_notice_area .station_main .inner {
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            width: 159px;
+            height: 41px;
+            vertical-align: top;
+            margin-top: 4px;
+            background-color: #fff;
+            border-radius: 39px;
+            z-index: 15;
+        }
+
+        .mcs_subway .icon_subway {
+            overflow: hidden;
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            vertical-align: middle;
+            background-image: url("/images/sp_subway_v2.png");
+            background-repeat: no-repeat;
+            -webkit-background-size: 150px 150px;
+            background-size: 150px 150px;
+            background-position: -46px 0;
+            vertical-align: top;
+            margin-top: 11px;
+        }
+
+        .mcs_subway .station_notice_area .station_main .icon_subway {
+            vertical-align: top;
+            margin-top: 11px;
+        }
+
+        .mcs_subway .station_notice_area .station_main .name {
+            overflow: hidden;
+            display: inline-block;
+            max-width: 102px;
+            font-size: 18px;
+            line-height: 42px;
+            color: #242424;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .mcs_subway .subwayline_map_area {
+            overflow-y: hidden;
+            overflow-x: auto;
+            margin-top: -14px;
+            padding: 5px 0 13px;
+            padding-bottom: 13px;
+            text-align: center;
+            line-height: 0;
+            font-size: 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mcs_subway .subwayline_map_area::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mcs_subway .subwayline_map_area>div {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mcs_subway .subwayline_map_area.rotate {
+            margin-left: -65px;
+            height: 94px;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle>div {
+            padding: 0 38px;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle .icon_cycle {
+            position: absolute;
+            top: 10px;
+            font-size: 14px;
+            line-height: 21px;
+            color: #3cb44a;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle .icon_cycle.left {
+            left: 18px;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle .icon_cycle.left:before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: -16px -122px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+            display: block;
+            margin: 0 auto 4px;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle .icon_cycle.right {
+            right: 18px;
+        }
+
+        .mcs_subway .subwayline_map_area.cycle .icon_cycle.right:before {
+            content: "";
+            display: block;
+            width: 15px;
+            height: 15px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: 0 -122px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+            display: block;
+            margin: 0 auto 4px;
+        }
+
+        .mcs_subway .subwayline_map {
+            position: relative;
+            height: 100%;
+            font-size: 0;
+            line-height: 0;
+            font-family: sans-serif;
+            white-space: nowrap;
+        }
+
+        .mcs_subway .subwayline_map .station {
+            display: inline-block;
+            position: relative;
+            height: 100%;
+            vertical-align: top;
+            white-space: normal;
+        }
+
+        .mcs_subway .subwayline_map .station:first-child {
+            margin-left: 13px;
+        }
+
+        .mcs_subway .subwayline_map .station:first-child .link_station {
+            min-width: auto;
+        }
+
+        .mcs_subway .subwayline_map .station:first-child .station_name {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .mcs_subway .subwayline_map .station:last-child {
+            margin-right: 13px;
+        }
+
+        .mcs_subway .subwayline_map .station:last-child .link_station {
+            min-width: auto;
+        }
+
+        .mcs_subway .subwayline_map .station:last-child .station_name {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .mcs_subway .subwayline_map .station[aria-current="page"] .ico_cicle {
+            top: 10.5px;
+            margin-left: -8px;
+            width: 16px;
+            height: 16px;
+            border-width: 4px;
+            border-radius: 16px;
+            border-color: #3cb44a;
+        }
+
+        .mcs_subway .subwayline_map .station[aria-current="page"] .station_name {
+            font-size: 15px;
+            line-height: 18px;
+            color: #242424;
+            font-weight: bold;
+        }
+
+        .mcs_subway .subwayline_map .station[aria-current="page"] .line_basic.twoway~.ico_cicle {
+            top: 29.5px;
+        }
+
+        .mcs_subway .subwayline_map .station.on .ico_cicle:before {
+            content: "";
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            margin-left: -4px;
+            margin-top: -4px;
+            width: 16px;
+            height: 16px;
+            display: block;
+            border-radius: 50%;
+            animation: wave-animate 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            -webkit-animation: wave-animate 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+
+        .mcs_subway .subwayline_map .station.on .ico_cicle:after {
+            position: relative;
+            content: "";
+            display: block;
+            margin-top: -12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .mcs_subway .subwayline_map .station.position1 {
+            left: 224px;
+            margin: 0;
+        }
+
+        .mcs_subway .subwayline_map .station.position1 .link_station {
+            min-width: 56px;
+        }
+
+        .mcs_subway .subwayline_map .station.position2 {
+            left: 112px;
+        }
+
+        .mcs_subway .subwayline_map .station.position3 {
+            top: 23px;
+        }
+
+        .mcs_subway .subwayline_map .station.position4 {
+            top: 46px;
+        }
+
+        .mcs_subway .subwayline_map .link_station {
+            position: relative;
+            display: block;
+            width: 100%;
+            min-width: 56px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mcs_subway .subwayline_map .line_basic {
+            position: absolute;
+            top: 17px;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background-color: #3cb44a;
+            border-color: #3cb44a;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.start {
+            left: 50%;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.end {
+            right: 50%;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.twoway {
+            top: 36px;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.twoway~.ico_cicle {
+            top: 33px;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.twoway~.station_name {
+            padding-top: 51px;
+        }
+
+        .mcs_subway .subwayline_map .line_basic.cross:after {
+            content: "";
+            display: block;
+            width: 3px;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .mcs_subway .subwayline_map .line_basic.cross+.line_branch.bottom_right {
+            top: 51px;
+        }
+
+        .mcs_subway .subwayline_map .ico_cicle {
+            position: absolute;
+            left: 50%;
+            display: block;
+            top: 14px;
+            margin-left: -5px;
+            width: 9px;
+            height: 9px;
+            border-width: 1px;
+            border-radius: 9px;
+            border-style: solid;
+            background-color: #fff;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        .mcs_subway .subwayline_map .ico_cicle::before {
+            background-color: #3cb44a;
+        }
+
+        .mcs_subway .subwayline_map .station_name {
+            display: block;
+            padding-top: 31px;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, HelveticaNeue,
+                AppleSDGothicNeo-Regular, sans-serif;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: -0.35px;
+            color: #8f8f8f;
+            white-space: nowrap;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            font-weight: normal;
+        }
+
+        .mcs_subway .subwayline_map .icon_way_next {
+            position: absolute;
+            top: 3px;
+            right: 0;
+            width: 19px;
+            height: 6px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: -35px -122px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+        }
+
+        .mcs_subway .subwayline_map .icon_way_circle {
+            position: absolute;
+            top: 28px;
+            right: 0;
+            width: 19px;
+            height: 10px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: -40px -132px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+        }
+
+        .station_departure_area {
+            margin: 0 18px 0;
+            padding: 15px 0;
+            background-color: #fff;
+            border: 1px solid #eaeef2;
+        }
+
+        .mcs_subway .station_departure_area:after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        .mcs_subway .station_departure_area .departure_box {
+            position: relative;
+            float: left;
+            width: 50%;
+            min-height: 67px;
+            padding: 0 10px 0 15px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        .mcs_subway .station_departure_area .departure_box:last-child {
+            padding: 0 15px 0 10px;
+        }
+
+        .mcs_subway .station_departure_area .departure_box:last-child:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: 0;
+            bottom: 3px;
+            border-left: 1px solid #e3e6e8;
+        }
+
+        .mcs_subway .station_departure_area .departure_name {
+            margin-bottom: 4px;
+            font-size: 15px;
+            color: rgb(36, 36, 36);
+            font-weight: bold;
+            overflow: hidden;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mcs_subway .station_departure_area .departure_name span {
+            font-weight: normal;
+        }
+
+        .mcs_subway .station_departure_area .departure_time {
+            position: relative;
+            margin-bottom: 3px;
+            font-size: 15px;
+        }
+
+        .mcs_subway .station_departure_area .departure_time:after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        .mcs_subway .station_departure_area .departure_time:last-child {
+            margin-bottom: 0;
+        }
+
+        .mcs_subway .station_departure_area .departure_time .time_box {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            overflow: hidden;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #8f8f8f;
+        }
+
+        .mcs_subway .station_departure_area .departure_time .time_box .time {
+            display: inline-block;
+            min-width: 40px;
+            white-space: nowrap;
+        }
+
+        .mcs_subway .station_departure_area .departure_time .count {
+            float: right;
+            margin-left: 3px;
+            color: #fc4c4e;
+            letter-spacing: -0.32px;
+        }
+
+        .mcs_subway .station_departure_area .departure_time .count em {
+            font-weight: 500;
+        }
+
+        .time_detail_area {
+            padding: 21px 18px;
+            border-top: 1px solid #ecf0f2;
+        }
+
+        .mcs_subway .time_detail_area .time_choice {
+            position: relative;
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li {
+            display: table-cell;
+            background-color: #fafbfc;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            border: 1px solid #e3e6e8;
+            border-left-color: #ecf0f2;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li:first-child {
+            border-left-color: #e3e6e8;
+            border-right: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li.on {
+            background-color: #fff;
+            border-bottom: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_choice .button_time {
+            position: relative;
+            display: block;
+            color: #424242;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li.on .button_time {
+            font-weight: bold;
+        }
+
+        .mcs_subway .time_detail_area .time_choice .button_time span {
+            position: relative;
+        }
+
+        .mcs_subway .time_detail_area .time_choice .button_time span:after {
+            content: "";
+            position: absolute;
+            top: 7px;
+            right: -14px;
+            width: 9px;
+            height: 6px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("/images/sp_icon_v5.png");
+            background-position: 0 -103px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li.on .button_time span:after {
+            background-position: -11px -103px;
+        }
+
+        .mcs_subway .time_detail_area .time_choice li.on .button_time span:after {
+            background-position: -11px -103px;
+        }
+
+        .mcs_subway .time_detail_area .time_table {
+            width: 100%;
+            border-left: 1px solid #e3e6e8;
+            border-right: 1px solid #e3e6e8;
+            border-bottom: 1px solid #e3e6e8;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_table thead tr {
+            display: block;
+        }
+
+        .mcs_subway .time_detail_area .time_table thead th {
+            border-left: 1px solid #f2f4f6;
+            border-bottom: 1px solid #f2f4f6;
+            border-top: 0;
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        .mcs_subway .time_detail_area .time_table thead th:first-child {
+            border-left: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_table thead th:only-child {
+            width: 100%;
+        }
+
+        .mcs_subway .time_detail_area .time_table tbody {
+            display: block;
+            max-height: 200px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mcs_subway .time_detail_area .time_table tbody tr {
+            display: table;
+            overflow: hidden;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .mcs_subway .time_detail_area .time_table tbody tr:first-child th {
+            border-top: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_table td {
+            border-top: 1px solid #f2f4f6;
+            border-left: 1px solid #f2f4f6;
+            text-align: left;
+        }
+
+        .mcs_subway .time_detail_area .time_table td:first-child {
+            border-left: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_table th {
+            border-top: 1px solid #f2f4f6;
+            padding: 10px 14px;
+            font-size: 1.5rem;
+            color: #8f8f8f;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .mcs_subway .time_detail_area .time_table th.table_title {
+            color: var(--G-color-text4);
+        }
+
+        .mcs_subway .time_detail_area .time_table .time_unit {
+            padding: 10px 9px 11px 14px;
+            border-bottom: 1px solid #f2f4f6;
+        }
+
+        .mcs_subway .time_detail_area .time_table .time_unit:last-child {
+            border-bottom: 0;
+        }
+
+        .mcs_subway .time_detail_area .time_table .box {
+            display: -webkit-box;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            max-width: 100%;
+        }
+
+        .mcs_subway .time_detail_area .time_table .box .name {
+            -webkit-flex: 1;
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #666;
+        }
+
+        .mcs_subway .time_detail_area .time_table .box .time {
+            min-width: 48px;
+            color: #8f8f8f;
+        }
+
+        .station_info_area {
+            padding: 0 18px;
+        }
+
+        .station_more {
+            padding: 15px 0 13px 0;
+            font-size: 16px;
+            line-height: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .station_more li {
+            margin-bottom: 3px;
+        }
+
+        .mcs_subway .station_more .more_title {
+            float: left;
+            min-width: 82px;
+            color: #8f8f8f;
+            font-weight: normal;
+            white-space: nowrap;
+        }
+
+        .mcs_subway .station_more .more_txt {
+            overflow: hidden;
+            display: block;
+            color: #8f8f8f;
+            word-break: keep-all;
+        }
+
+        .mcs_subway .subway_info {
+            padding: 12px 17px 11px;
+            font-size: 14px;
+            line-height: 19px;
+            color: rgb(143, 143, 143);
+            letter-spacing: -0.5px;
+            border-top: 1px solid rgb(236, 240, 242);
+        }
+
+        .mcs_subway .subway_info .info_date {
+            display: block;
+            margin-top: 3px;
+        }
+
+        .api_more_wrap .api_more {
+            display: block;
+            position: relative;
+            height: 48px;
+            border-top: 1px solid #eaeef2;
+            border-bottom: 1px solid #e2e5e8;
+            font-size: 16px;
+            line-height: 48px;
+            color: #424242;
+            text-align: center;
+            background-color: #f4f7f8;
+        }
+
+        .spnew {
+            display: inline-block;
+            overflow: hidden;
+            color: transparent;
+            white-space: nowrap;
+            background: url(/images/sp_common_24d7c00c.png) 0 0 no-repeat;
+            -webkit-background-size: 449px 442px;
+            background-size: 449px 442px;
+        }
+
+        .api_more_wrap .api_more .ico_arr {
+            margin-left: 8px;
+            width: 15px;
+            height: 13px;
+            background-position: -401px -400px;
+            vertical-align: 0;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, false);
+        var lastTouchEnd = 0;
+        document.documentElement.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</head>
+
+<body class="type_white">
+    <div id="ct" role="main">
+        <% include header %>
+        <div class="flick-container">
+            <div class="wrap">
+                <section class="sc mcs_subway">
+                    <div class="api_subject_bx">
+                        <div class="api_title_area">
+                            <h2 class="api_title">장비 상세 정보</h2>
+                            <div class="api_title_sub">
+                                <a class="button_refresh"></a>
+                            </div>
+                        </div>
+                        <div class="subway">
+                            <div class="station_info_top">
+                                <div class="station_notice_area">
+                                    <div class="station_sub prev">
+                                        <div class="station">
+                                            <a class="link_station"><span class="name">&nbsp;</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="station_main">
+                                        <span class="main_inner"> <span class="inner"><span href="#"
+                                                    class="name">T2K04</span> </span> </span>
+                                    </div>
+                                    <div class="station_sub next">
+                                        <div class="station">
+                                            <a class="link_station"><span class="name">&nbsp;</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="subwayline_map_area">
+                                    <div class="_subway_line_wrap">
+                                        <ul class="subwayline_map">
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic start"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">wafer<br>cleaning</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">chuck<br>unload</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">needle<br>cleaning</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">chuck<br>load</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">waferid<br>read</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">wafer<br>start</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">probing<br>stop</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">chuck<br>load</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">card<br>change</span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">alarm<br></span>
+                                                </a>
+                                            </li>
+                                            <li class="station">
+                                                <a class="link_station">
+                                                    <span class="line_basic"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">wafer<br>end</span>
+                                                </a>
+                                            </li>
+                                            <li class="station on" aria-current="page" aria-selected="true">
+                                                <a class="link_station">
+                                                    <span class="line_basic end"></span>
+                                                    <i class="ico_cicle"></i>
+                                                    <span class="station_name">chuck<br>unload</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="arrive_area">
+                                    <div class="station_departure_area">
+                                        <div class="departure_box"> <strong class="departure_name">최근 알람 발생</strong>
+                                            <ul>
+                                                <li class="departure_time"><span
+                                                        class="time_box"> <em class="time">21.08.11</em> <span
+                                                            class="name">01:49:11</span> </span> </li>
+                                                <li class="departure_time">
+                                                    <span class="time_box"> <em class="time">Pin Fail</em></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="departure_box"> <strong class="departure_name">Alarm 건 수</strong>
+                                            <ul>
+                                                <li class="departure_time"> <span class="count"><em>3</em>건</span> <span
+                                                        class="time_box"> <em class="time">당일</em></span> </li>
+                                                <li class="departure_time"> <span class="count"><em>110</em>건</span>
+                                                    <span class="time_box"> <em class="time">최근 7일</em></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time_detail_area">
+                                <ul class="time_choice">
+                                    <li class="_time_tab">
+                                        <a class="button_time">
+                                            <span>가동률</span>
+                                        </a>
+                                    </li>
+                                    <li class="_time_tab on">
+                                        <a class="button_time">
+                                            <span>Main Status</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="time_detail_inner">
+                                    <table cellspacing="0" border="0" class="time_table on">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">BM WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.26</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">1.46</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.45</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">11.82</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">ETC</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">MATERIAL DOWN</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.23</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">BM WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.26</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">1.46</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.45</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">11.82</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">ETC</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">MATERIAL DOWN</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.23</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">BM WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.26</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">1.46</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.45</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">11.82</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">ETC</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">MATERIAL DOWN</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.23</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">BM WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.26</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">1.46</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CONV START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.45</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST START</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">11.82</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">CUST WAIT</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">ETC</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">MATERIAL DOWN</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="time_unit">
+                                                        <div class="box"> <span class="time">0.23</span></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <p class="subway_info">MES 데이터는 실제 데이터와 차이가 있을 수 있으니 업데이트 시간 정보를 확인해 주시기 바랍니다.<span
+                                    class="info_date">업데이트 2021.08.11. 02:07:04</span></p>
+                        </div>
+                    </div>
+                    <div class="api_more_wrap">
+                        <a class="api_more">
+                            MES 데이터 자세히 보기<i class="spnew ico_arr"></i></a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

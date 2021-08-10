@@ -311,7 +311,7 @@
     right: 0;
     left: 60px;
     height: 1px;
-    background-color: #efeff0;
+    background-color: rgba(185, 187, 190, 0.13);
 }
 
 .ce_elist .ce_ea {

@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/header.css" rel="stylesheet">
+    <style>
+        .cs_voting_rate {
+            letter-spacing: -0.3px;
+        }
+
+        .api_subject_bx {
+            margin-top: 9px;
+            border: 1px solid rgb(226, 229, 232);
+            border-width: 1px 0;
+            background-color: #ffffff;
+        }
+
+        .api_title_area {
+            position: relative;
+        }
+
+        .api_title {
+            height: 50px;
+            padding: 0 18px;
+            font-size: 17px;
+            line-height: 51px;
+            color: #000000;
+            letter-spacing: -0.3px;
+        }
+
+        .num_statement {
+            background-color: #fbfcfd;
+            border-top: 1px solid rgb(236, 240, 242);
+        }
+
+        .legend_area {
+            padding: 16px 18px 12px 18px;
+        }
+
+        .legend_area ul {
+            overflow: hidden;
+        }
+
+        .legend_area li {
+            float: left;
+            margin: 0 0 0 9px;
+            font-size: 14px;
+            line-height: 18px;
+            color: rgb(66, 66, 66);
+        }
+
+        .legend_area ul li:first-child {
+            margin-left: 0;
+        }
+
+        .legend_area ul li::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin: 5px 5px 0 0;
+            border-radius: 7px;
+            -webkit-border-radius: 7px;
+            vertical-align: top;
+        }
+
+        .legend_area ul li.e_president::before {
+            background-color: rgba(224, 95, 95, 0.7);
+        }
+
+        .legend_area ul li.e_general::before {
+            background-color: rgba(53, 177, 204, 0.7);
+        }
+
+        .legend_area ul li.e_local::before {
+            background-color: rgba(110, 90, 206, 0.7);
+        }
+
+        .graph_area {
+            overflow: hidden;
+            padding: 0 0 0 18px;
+            height: 217px;
+        }
+
+        .graph_header {
+            float: left;
+            height: 217px;
+            width: 162px;
+            font-size: 11px;
+            color: rgb(143, 143, 143);
+        }
+
+        .graph_header ol {
+            padding: 0 0 0;
+        }
+
+        .graph_header li {
+            height: 37px;
+            padding: 0px 0 0 6px;
+        }
+
+        .graph_scroll_wrap {
+            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            height: 217px;
+            padding-bottom: 30px;
+            box-sizing: content-box;
+        }
+
+        .graph_scroll_wrap .inner {
+            position: relative;
+            display: inline-block;
+            height: 217px;
+            margin-right: 18px;
+        }
+
+        .list_scroll {
+            position: relative;
+            padding: 1px 0 0 0;
+            height: 100%;
+            font-size: 0;
+            line-height: 0;
+            white-space: nowrap;
+        }
+
+        .list_scroll .bar.item {
+            display: inline-block;
+            width: 61px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .list_scroll .bar.item.on {
+            position: relative;
+        }
+
+        .list_scroll .bar.item.on::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 31px;
+            left: 0px;
+            width: 1px;
+            z-index: 10;
+        }
+
+        .list_scroll .bar.item.on::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 31px;
+            right: -1px;
+            width: 1px;
+            background-color: rgba(233, 236, 239, 0.5);
+            z-index: 10;
+        }
+
+        .list_scroll .bar.item a {
+            display: block;
+            height: 100%;
+        }
+
+        .graph_wrap {
+            position: relative;
+            z-index: 100;
+            height: 185px;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: flex-end;
+            -webkit-align-items: flex-end;
+            display: -webkit-box;
+            -webkit-box-align: end;
+            -webkit-box-pack: center;
+        }
+
+        .item.on .graph_wrap {
+            background-color: rgba(233, 236, 239, 0.3);
+        }
+
+        .graph_wrap .graph_bar {
+            display: block;
+            width: 11px;
+            left: 50%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            background-origin: border-box;
+        }
+
+        .item.e_local .graph_bar {
+            background-color: #988bd7;
+            border-top: 1px solid #7b6cc5;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item.e_general .graph_bar {
+            background-color: #6ec9dc;
+            border-top: 1px solid #5ebccf;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item.e_president .graph_bar {
+            background-color: #ec8d8d;
+            border-top: 1px solid #e27676;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .graph_wrap .graph_bar .num {
+            display: block;
+            width: 30px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 16px;
+            position: relative;
+            left: 50%;
+            top: -18px;
+            margin-left: -15px;
+        }
+
+        .item.e_local .graph_bar .num {
+            color: #988bd7;
+        }
+
+        .item.e_general .graph_bar .num {
+            color: #5ebccf;
+        }
+
+        .item.e_president .graph_bar .num {
+            color: #ec8d8d;
+        }
+
+        .num_title {
+            display: block;
+            position: relative;
+            height: 30px;
+            line-height: 30px;
+            border-left: 1px solid rgba(220, 224, 226, 0.5);
+            background-color: #fbfcfd;
+            text-align: center;
+            font-weight: normal;
+            color: rgb(102, 102, 102);
+        }
+
+        .item:first-child .num_title {
+            border-left: 0l;
+        }
+
+        .table_title {
+            position: relative;
+            padding: 18px 0 0 18px;
+        }
+
+        .table_title h3 {
+            font-size: 16px;
+            color: rgb(36, 36, 36);
+        }
+
+        .sub_option_area {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 0;
+            font-family: sans-serif;
+        }
+
+        .sub_option_area .sub_option {
+            display: inline-block;
+            padding: 0 7px;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, HelveticaNeue,
+                AppleSDGothicNeo-Regular, sans-serif;
+            color: #8f8f8f;
+            letter-spacing: -0.3px;
+        }
+
+        .sub_option_area .sub_option::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 6px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            background-color: #9e9e9e;
+            vertical-align: 3px;
+        }
+
+        .sub_option_area .sub_option[aria-selected="true"] {
+            color: #242424;
+        }
+
+        .sub_option_area .sub_option[aria-selected="true"]::before {
+            background-color: #0abe16;
+        }
+
+        .table_content {
+            overflow: hidden;
+        }
+
+        .table_header {
+            float: left;
+            width: 162px;
+            border: 1px solid #ecf0f2;
+            border-left: 0;
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .table_header table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .table_header table th {
+            height: 42px;
+            background-color: #f8fafb;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .table_header table tr+tr th {
+            border-top: 1px solid #ecf0f2;
+        }
+
+        .table_body {
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        .api_list_scroll {
+            position: relative;
+            height: 100%;
+            font-family: sans-serif;
+            font-size: 0;
+            line-height: 0;
+            white-space: nowrap;
+        }
+
+        .table_body table {
+            float: left;
+            table-layout: auto;
+        }
+
+        .table_body tr th {
+            width: 61px;
+            height: 42px;
+            border: 1px solid #ecf0f2;
+            border-width: 1px 0 0 1px;
+            background-color: #f8fafb;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            font-weight: normal;
+            border-top: 0;
+            border-bottom: 0;
+            border-right: 0;
+        }
+
+        .table_body tr th:first-child {
+            border-left: 0;
+        }
+
+        .table_body tr th:last-child {
+            border-width: 1px;
+        }
+
+        .table_body tbody tr td {
+            min-width: 61px;
+            height: 42px;
+            border: 1px solid #ecf0f2;
+            border-width: 1px 0 0 1px;
+            background-color: #fff;
+            vertical-align: middle;
+            text-align: center;
+            color: #424242;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .table_body tbody tr td.highest {
+            color: #f84b4b;
+            font-weight: bold;
+        }
+
+        .table_body tbody tr td.lowest {
+            color: #5199fc;
+            font-weight: bold;
+        }
+
+        .table_body tbody tr td:first-child {
+            border-left: 0;
+        }
+
+        .table_body tbody tr td:last-child {
+            border-width: 1px;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, false);
+        var lastTouchEnd = 0;
+        document.documentElement.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</head>
+
+<body class="type_white">
+    <div id="ct" role="main">
+        <% include header %>
+        <div class="flick-container">
+            <div class="wrap">
+                <section class="sc cs">
+                    <div class="sc cs_voting_rate">
+                        <div class="api_subject_bx">
+                            <div class="api_title_area">
+                                <h2 class="api_title">알람별 제품 수 집계</h2>
+                            </div>
+                            <div class="num_statement">
+                                <div class="table_box">
+                                    <div class="table_content">
+                                        <div class="table_header">
+                                            <table>
+                                                <caption>투표율제목</caption>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>제품명</th>
+                                                    </tr>
+                                                    <tr><th scope="col">ALL</th></tr>
+                                                    <tr><th scope="col">Bin Fail</th></tr>
+                                                    <tr><th scope="col">Card changer (TSEN)</th></tr>
+                                                    <tr><th scope="col">Card changer (HSEN)</th></tr>
+                                                    <tr><th scope="col">Cassette</th></tr>
+                                                    <tr><th scope="col">Cassette (POSI)</th></tr>
+                                                    <tr><th scope="col">Cassette (FOUP)</th></tr>
+                                                    <tr><th scope="col">Cleaning unit</th></tr>
+                                                    <tr><th scope="col">GPIB</th></tr>
+                                                    <tr><th scope="col">GPIB (RECE)</th></tr>
+                                                    <tr><th scope="col">GPIB (SEND)</th></tr>
+                                                    <tr><th scope="col">O/S System</th></tr>
+                                                    <tr><th scope="col">O/S System (IO)</th></tr>
+                                                    <tr><th scope="col">O/S System (MOTI)</th></tr>
+                                                    <tr><th scope="col">OCR (UMAT)</th></tr>
+                                                    <tr><th scope="col">OCR (NREA)</th></tr>
+                                                    <tr><th scope="col">Pin Fail (FOCU)</th></tr>
+                                                    <tr><th scope="col">Pin Fail (SPOS)</th></tr>
+                                                    <tr><th scope="col">Pin Fail (NPOS)</th></tr>
+                                                    <tr><th scope="col">Pre Align</th></tr>
+                                                    <tr><th scope="col">Process</th></tr>
+                                                    <tr><th scope="col">Wafer Align</th></tr>
+                                                    <tr><th scope="col">Wafer Align (EDGE)</th></tr>
+                                                    <tr><th scope="col">Wafer Align (THIC)</th></tr>
+                                                    <tr><th scope="col">Wafer Align (FOCU)</th></tr>
+                                                    <tr><th scope="col">Wafer Align (LMOD)</th></tr>
+                                                    <tr><th scope="col">Wafer Align (HMOD)</th></tr>
+                                                    <tr><th scope="col">Wafer Align (MARK)</th></tr>
+                                                    <tr><th scope="col">Wafer Load (WCST)</th></tr>
+                                                    <tr><th scope="col">Wafer Load (SCAN)</th></tr>
+                                                    <tr><th scope="col">Wafer Load (TURN)</th></tr>
+                                                    <tr><th scope="col">Wafer Load (AR.VA)</th></tr>
+                                                    <tr><th scope="col">Wafer Load (AR.TI)</th></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table_body">
+                                            <div class="inner">
+                                                <div class="api_list_scroll">
+                                                    <table>
+                                                        <caption>투표율</caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">99KC33</th>
+                                                                <th scope="col">S2FPS5</th>
+                                                                <th scope="col">99KC33</th>
+                                                                <th scope="col">S2FPS5</th>
+                                                                <th scope="col">99KC33</th>
+                                                                <th scope="col">S2FPS5</th>
+                                                                <th scope="col">99KC33</th>
+                                                                <th scope="col">S2FPS5</th>
+                                                                <th scope="col">99KC33</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr><td>6</td><td>0</td><td>2</td><td>10</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>11</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>10</td><td>201</td><td>5</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>9</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>6</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>7</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>23</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>34</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>10</td><td>0</td><td>18</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>23</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

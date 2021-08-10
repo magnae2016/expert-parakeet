@@ -1,0 +1,59 @@
+<!-- header -->
+<header class="header">
+    <div id="sch" class="sch">
+        <section>
+            <div class="sch_wrap">
+                <div class="sch_inner">
+                    <div class="sch_logo">
+                        <a href="/" class="sch_logo_nepes">
+                            <span class="sch_ico_mask"></span>
+                        </a>
+                    </div>
+                    <form>
+                        <div class="sch_input_wrap">
+                            <input id="query" type="search" name="query" title="검색어를 입력해주세요." value="T2K04"
+                                placeholder="검색어를 입력해주세요." class="sch_input" autocomplete="off">
+                            <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                        </div>
+                        <button class="sch_btn_search">
+                            <span class="sch_ico_mask"></span>
+                        </button>
+                        <div class="sch_region"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="sch_tab sc">
+        <div class="sch_tab_inner">
+            <div class="api_list_scroll_wrap">
+                <ul class="api_list_scroll" role="tablist">
+                    <li class="bx" role="presentation">
+                        <a href="/a" class="<%= menu == 'a' ? 'selected' : '' %>" aria-selected="true" role="tab">
+                            <span class="m">정보</span></a>
+                    </li>
+                    <li class="bx" role="presentation">
+                        <a href="/b" class="<%= menu == 'b' ? 'selected' : '' %>" aria-selected="true" role="tab">
+                            <span class="m">알람</span></a>
+                    </li>
+                    <li class="bx" role="presentation">
+                        <a href="/c" class="<%= menu == 'c' ? 'selected' : '' %>" aria-selected="true" role="tab">
+                            <span class="m">MTBI</span></a>
+                    </li>
+                    <li class="bx" role="presentation">
+                        <a href="/d" class="<%= menu == 'd' ? 'selected' : '' %>" aria-selected="true" role="tab">
+                            <span class="m">분석 데이터</span></a>
+                    </li>
+                    <li class="bx" role="presentation">
+                        <a href="/e" class="<%= menu == 'e' ? 'selected' : '' %>" aria-selected="true" role="tab">
+                            <span class="m">제품 분석</span></a>
+                    </li>
+                    <li class="bx" role="presentation">
+                        <a class="" aria-selected="true" role="tab">
+                            <span class="m">간트 차트</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header><!-- /END header -->
