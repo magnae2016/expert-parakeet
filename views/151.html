@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+-->
+
+    <!-- Optional CSS -->
+    <link href="../public/stylesheets/style.css" rel="stylesheet">
+    <link href="../public/stylesheets/header.css" rel="stylesheet">
+    <style>
+        .api_subject_bx {
+            margin-top: 9px;
+            border: 1px solid #e2e5e8;
+            border-width: 1px 0;
+            background-color: #fff;
+        }
+
+        .api_title_area {
+            position: relative;
+        }
+
+        .api_title_area .api_title {
+            height: 50px;
+            padding: 0 18px;
+            font-size: 18px;
+            line-height: 51px;
+            color: #000000;
+            letter-spacing: -0.3px;
+        }
+
+        .api_title_area .api_title_sub {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            font-size: 16px;
+            line-height: 51px;
+            text-align: right;
+        }
+
+        .cs_bus_info .button_refresh {
+            position: relative;
+            display: block;
+            width: 48px;
+            height: 100%;
+            border-left: 1px solid #ecf0f2;
+        }
+
+        .cs_bus_info .button_refresh:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            margin-top: -9px;
+            width: 18px;
+            height: 18px;
+            overflow: hidden;
+            display: inline-block;
+            background-image: url("../images/sp_icon_v5.png");
+            background-position: 0 -180px;
+            -webkit-background-size: 100px 260px;
+            background-size: 100px 260px;
+        }
+
+        .bus_area .content_area {
+            position: relative;
+            z-index: 105;
+        }
+
+        .api_more_wrap .api_more_multi {
+            display: block;
+            position: relative;
+            height: 48px;
+            border-top: 1px solid #eaeef2;
+            border-bottom: 1px solid #e2e5e8;
+            font-size: 16px;
+            line-height: 48px;
+            color: #424242;
+            text-align: center;
+            background-color: #eaeef2;
+        }
+
+        .spnew {
+            display: inline-block;
+            overflow: hidden;
+            color: transparent;
+            white-space: nowrap;
+            background: url(../images/sp_common_24d7c00c.png) 0 0 no-repeat;
+            -webkit-background-size: 449px 442px;
+            background-size: 449px 442px;
+        }
+
+        .api_more_wrap .api_more_multi .ico_arr {
+            margin-left: 8px;
+            width: 16px;
+            height: 9px;
+            background-position: -145px -44px;
+        }
+
+        .api_more_wrap .api_more_multi .ico_arr {
+            -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+                -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .run_info {
+            position: relative;
+        }
+
+        .cs_bus_info .run_info .course_info {
+            overflow: hidden;
+            padding: 14px 18px 3px;
+            background-color: #f8fafb;
+            border-bottom: 1px solid #ecf0f2;
+            font-size: 16px;
+            line-height: 21px;
+            color: #242424;
+        }
+
+        .cs_bus_info .run_info .course_info .destination_info {
+            overflow: hidden;
+            max-height: 48px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .cs_bus_info .run_info .course_info .bus_start {
+            display: inline;
+            overflow: hidden;
+            font-weight: bold;
+            color: #242424;
+            line-height: 24px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .cs_bus_info .run_info .course_info ul {
+            margin: 5px 0 11.5px;
+        }
+
+        .cs_bus_info .run_info .course_info li {
+            margin-bottom: 3px;
+            color: #8f8f8f;
+            font-size: 15px;
+        }
+
+        .cs_bus_info .run_info .course_info li .end_point {
+            color: #424242;
+        }
+
+        .cs_bus_info .run_info .course_info li .end_point+.schedule {
+            margin-left: 7px;
+        }
+
+        .cs_bus_info .run_info .course_info li .end_point+.schedule em {
+            display: inline-block;
+        }
+
+        .cs_bus_info .run_info .course_info li .bar {
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            margin: 0 4.5px;
+            background-color: #e6e4e4;
+        }
+
+        .cs_bus_info .run_info .course_info .interval {
+            margin: 0.5px 0 11px;
+            padding-top: 11px;
+            border-top: 1px solid #ecf0f2;
+        }
+
+        .cs_bus_info .run_info .course_info .interval dl {
+            font-size: 15px;
+            line-height: 22px;
+        }
+
+        .cs_bus_info .run_info .course_info .interval dl dt {
+            float: left;
+            margin-right: 12px;
+            margin-bottom: 2px;
+            overflow: hidden;
+            color: #424242;
+        }
+
+        .cs_bus_info .run_info .course_info .interval dl dd {
+            overflow: hidden;
+            margin-bottom: 2px;
+            color: #8f8f8f;
+        }
+
+        .cs_bus_info .run_info .course_info .interval dl dd .text {
+            display: inline-block;
+        }
+
+        .cs_bus_info .bus_map {
+            overflow: hidden;
+            position: relative;
+            max-height: 267px;
+            background: #f8fafb;
+        }
+
+        .cs_bus_info .bus_map ul {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .cs_bus_info .bus_map ul li {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .cs_bus_info .bus_map ul li.on {
+            background: #f3f9fe;
+        }
+
+        .cs_bus_info .bus_map ul li:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background-color: #f2f4f6;
+            content: "";
+        }
+
+        .cs_bus_info .bus_map ul li a {
+            display: block;
+            height: 67px;
+            width: 100%;
+        }
+
+        .cs_bus_info .bus_map ul li .busmap_line {
+            float: left;
+            position: relative;
+            width: 85px;
+            height: 100%;
+        }
+
+        .cs_bus_info .bus_map ul li .surround_station {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            right: 5.5px;
+            z-index: 10;
+            width: 23px;
+            height: 24px;
+            margin-top: -11.5px;
+        }
+
+        .cs_bus_info .bus_map ul li .surround_station:before {
+            content: "";
+            display: inline-block;
+            width: 23px;
+            height: 24px;
+            vertical-align: top;
+            background: url("../images/sp_bus_info.png") -20px -37px no-repeat;
+            background-size: 140px 160px;
+            -webkit-background-size: 140px 160px;
+        }
+
+        .cs_bus_info .bus_map ul li .line {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 15.5px;
+            z-index: 1;
+            width: 3px;
+            background-color: #386de8;
+        }
+
+        .cs_bus_info .bus_map ul li .dir {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            right: 11px;
+            z-index: 3;
+            width: 12px;
+            height: 12px;
+            margin-top: -5.5px;
+            border-radius: 12px 12px;
+            -webkit-border-radius: 12px 12px;
+            background-color: #386de8;
+        }
+
+        .cs_bus_info .bus_map ul li .dir:before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            vertical-align: top;
+            background: url("../images/bus_mask.png") 0 0 no-repeat;
+            background-size: 12px auto;
+            -webkit-background-size: 12px auto;
+            border-radius: 12px 12px;
+            -webkit-border-radius: 12px 12px;
+        }
+
+        .cs_bus_info .bus_map .busmap_txt {
+            display: table-cell;
+            position: relative;
+            height: 70px;
+            padding: 12px 18px 12px 3px;
+            line-height: 17px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        .cs_bus_info .bus_map .busmap_txt .station_name {
+            display: table-cell;
+            margin-bottom: 2px;
+            font-size: 16px;
+            font-weight: normal;
+            color: rgb(36, 36, 36);
+        }
+
+        .cs_bus_info .bus_map .busmap_txt .station_name>span {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            line-height: 24px;
+        }
+
+        .cs_bus_info .bus_map .busmap_txt .station_info {
+            margin-top: 1.5px;
+            font-size: 15px;
+            color: #8f8f8f;
+            line-height: 19px;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        .cs_bus_info .bus_map .busmap_txt .station_info>span+span:before {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: #e1e1e1;
+            margin: 4px 9px 0 5px;
+            vertical-align: top;
+        }
+    </style>
+    <title>Hello, world!</title>
+    <script>
+        document.documentElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, false);
+        var lastTouchEnd = 0;
+        document.documentElement.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</head>
+
+<body class="type_white">
+    <div id="ct" role="main">
+        <!-- header -->
+        <header class="header">
+            <div id="sch" class="sch">
+                <section>
+                    <div class="sch_wrap">
+                        <div class="sch_inner">
+                            <div class="sch_logo">
+                                <a href="index.html" class="sch_logo_nepes">
+                                    <span class="sch_ico_mask"></span>
+                                </a>
+                            </div>
+                            <form>
+                                <div class="sch_input_wrap">
+                                    <input id="query" type="search" name="query" title="검색어를 입력해주세요."
+                                        value="서울 2호선 신도림역" placeholder="검색어를 입력해주세요." class="sch_input"
+                                        autocomplete="off">
+                                    <button id="clear_input" type="button" class="sch_btn_reset"></button>
+                                </div>
+                                <button class="sch_btn_search">
+                                    <span class="sch_ico_mask"></span>
+                                </button>
+                                <div class="sch_region"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="sch_tab sc">
+                <div class="sch_tab_inner">
+                    <div class="api_list_scroll_wrap">
+                        <ul class="api_list_scroll" role="tablist">
+                            <li class="bx" role="presentation">
+                                <a class="selected" aria-selected="true" role="tab">
+                                    <span class="m">통합</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">VIEW</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">이미지</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">지식iN</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">인플루언서</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">동영상</span></a>
+                            </li>
+                            <li class="bx" role="presentation">
+                                <a class="" aria-selected="true" role="tab">
+                                    <span class="m">쇼핑</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /END header -->
+        <div class="flick-container">
+            <div class="wrap">
+                <section class="sc cs_bus_info">
+                    <div class="api_subject_bx">
+                        <div class="api_title_area">
+                            <h2 class="api_title">버스</h2>
+                            <div class="api_title_sub">
+                                <a class="button_refresh"></a>
+                            </div>
+                        </div>
+                        <div class="bus_area">
+                            <div class="content_area">
+                                <div class="run_info">
+                                    <div class="course_info">
+                                        <div class="destination_info">
+                                            <span class="bus_start">우이동</span>
+                                        </div>
+                                        <ul>
+                                            <li> <span class="end_point">우이동</span> <span class="schedule"><em>첫차
+                                                        04:00</em> <span class="bar"></span> <em>막차 22:50</em></span>
+                                            </li>
+                                            <li> <span class="end_point">중앙대</span> <span class="schedule"><em>첫차
+                                                        04:00</em> <span class="bar"></span> <em>막차 22:50</em></span>
+                                            </li>
+                                        </ul>
+                                        <div class="interval">
+                                            <dl>
+                                                <dt>배차간격</dt>
+                                                <dd><span class="text">평일 7분,</span> <span class="text">토요일 14분,</span>
+                                                    <span class="text">일요일 14분</span></dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="bus_map">
+                                        <ul>
+                                            <li class="on">
+                                                <a>
+                                                    <div class="busmap_line">
+                                                        <span class="surround_station"></span>
+                                                        <span class="line"></span>
+                                                    </div>
+                                                    <div class="busmap_txt">
+                                                        <div class="station_title">
+                                                            <strong class="station_name">
+                                                                <span>을지로입구역.광교</span></strong>
+                                                        </div>
+                                                        <div class="station_info">
+                                                            <span class="street_number">02246</span>
+                                                            <span class="distance">432m</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="on">
+                                                <a>
+                                                    <div class="busmap_line">
+                                                        <span class="surround_station"></span>
+                                                        <span class="line"></span>
+                                                    </div>
+                                                    <div class="busmap_txt">
+                                                        <div class="station_title">
+                                                            <strong class="station_name">
+                                                                <span>을지로입구역.광교</span></strong>
+                                                        </div>
+                                                        <div class="station_info">
+                                                            <span class="street_number">02246</span>
+                                                            <span class="distance">432m</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a>
+                                                    <div class="busmap_line">
+                                                        <span class="line"></span>
+                                                        <span class="dir"></span>
+                                                    </div>
+                                                    <div class="busmap_txt">
+                                                        <div class="station_title">
+                                                            <strong class="station_name">
+                                                                <span>을지로입구역.광교</span></strong>
+                                                        </div>
+                                                        <div class="station_info">
+                                                            <span class="street_number">02246</span>
+                                                            <span class="distance">432m</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="last">
+                                                <a>
+                                                    <div class="busmap_line">
+                                                        <span class="line"></span>
+                                                        <span class="dir"></span>
+                                                    </div>
+                                                    <div class="busmap_txt">
+                                                        <div class="station_title">
+                                                            <strong class="station_name">
+                                                                <span>을지로입구역.광교</span></strong>
+                                                        </div>
+                                                        <div class="station_info">
+                                                            <span class="street_number">02246</span>
+                                                            <span class="distance">432m</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="api_more_wrap">
+                        <a class="api_more_multi">
+                            연계버스 및 출구 더보기<i class="spnew ico_arr"></i></a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
